@@ -53,4 +53,51 @@ public class JsonReader {
         Gson gson = new Gson();
         return gson.fromJson(jsonString, MeasurementUnit[].class);
     }
+    public static User[] convertJsonToUser(Context context) {
+
+        String jsonString = "";
+        try {
+            InputStream inputStream = context.getAssets().open("raw/user.json");
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            inputStream.read(buffer);
+            inputStream.close();
+            jsonString = new String(buffer, "UTF-8");
+        } catch (IOException e) { e.printStackTrace(); }
+
+        Gson gson = new Gson();
+        return gson.fromJson(jsonString, User[].class);
+    }
+
+    public static RecipeIngredients[] convertJsonToRecipeIngredients(Context context) {
+
+        String jsonString = "";
+        try {
+            InputStream inputStream = context.getAssets().open("raw/recipe_ingredients.json");
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            inputStream.read(buffer);
+            inputStream.close();
+            jsonString = new String(buffer, "UTF-8");
+        } catch (IOException e) { e.printStackTrace(); }
+
+        Gson gson = new Gson();
+        return gson.fromJson(jsonString, RecipeIngredients[].class);
+    }
+
+    public static Recipe[] convertJsonToRecipe(Context context) {
+
+        String jsonString = "";
+        try {
+            InputStream inputStream = context.getAssets().open("raw/recipe.json");
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            inputStream.read(buffer);
+            inputStream.close();
+            jsonString = new String(buffer, "UTF-8");
+        } catch (IOException e) { e.printStackTrace(); }
+
+        Gson gson = new Gson();
+        return gson.fromJson(jsonString, Recipe[].class);
+    }
 }

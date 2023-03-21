@@ -7,6 +7,9 @@ import com.example.cis2208mcfoodforge.Database.Ingredient;
 import com.example.cis2208mcfoodforge.Database.JsonReader;
 import com.example.cis2208mcfoodforge.Database.MeasurementQty;
 import com.example.cis2208mcfoodforge.Database.MeasurementUnit;
+import com.example.cis2208mcfoodforge.Database.Recipe;
+import com.example.cis2208mcfoodforge.Database.RecipeIngredients;
+import com.example.cis2208mcfoodforge.Database.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,16 +46,20 @@ public class MainActivity extends AppCompatActivity {
 
         Ingredient[] ingredients = JsonReader.convertJsonToIngredient(getApplicationContext());
         MeasurementQty[] measurementQties = JsonReader.convertJsonToMeasurementQty(getApplicationContext());
-        MeasurementUnit[] measurementunits = JsonReader.convertJsonToMeasurementUnit(getApplicationContext());
+        MeasurementUnit[] measurementUnits = JsonReader.convertJsonToMeasurementUnit(getApplicationContext());
+        User[] users = JsonReader.convertJsonToUser(getApplicationContext());
+        RecipeIngredients[] recipeIngredients = JsonReader.convertJsonToRecipeIngredients(getApplicationContext());
+        Recipe[] recipes = JsonReader.convertJsonToRecipe(getApplicationContext());
 
-
-        for (MeasurementUnit qty : measurementunits) {
-            // Access the fields of the table object
-            String desc = qty.getDescription();
-            int id = qty.getMeasurement_unit_id();
+        for (Recipe qty : recipes) {
+            int id1 = qty.getRecipe_id();
+            int id2 = qty.getUser_id();
+            String id3 = qty.getFavourite_count();
+            String id5 = qty.getRecipe_description();
+            String id6 = qty.getRecipe_name();
 
             // Do something with the table data
-            Log.d("MainActivity", "Ingredient " + desc + " has " + id + " id.");
+            Log.d("MainActivity", "Ingredient " + id1+ id2+ " has " + id3 + id5+ id6+ " id.");
         }
     }
 
