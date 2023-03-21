@@ -1,0 +1,22 @@
+[
+    {
+        "name": "user",
+        "seq": 7
+    },
+    {
+        "name": "ingredient",
+        "seq": 61
+    },
+    {
+        "name": "measurement_unit",
+        "seq": 5
+    },
+    {
+        "name": "measurement_qty",
+        "seq": 11
+    },
+    {
+        "name": "recipe",
+        "seq": 30
+    }
+]

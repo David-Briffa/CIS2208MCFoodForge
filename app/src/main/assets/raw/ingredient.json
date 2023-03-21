@@ -1,0 +1,246 @@
+[
+    {
+        "ingredient_id": 1,
+        "ingredient_name": "Chicken breast"
+    },
+    {
+        "ingredient_id": 2,
+        "ingredient_name": "Thyme"
+    },
+    {
+        "ingredient_id": 3,
+        "ingredient_name": "Beef ribeye"
+    },
+    {
+        "ingredient_id": 4,
+        "ingredient_name": "Pork ribs"
+    },
+    {
+        "ingredient_id": 5,
+        "ingredient_name": "Pork loin"
+    },
+    {
+        "ingredient_id": 6,
+        "ingredient_name": "Chicken thigh"
+    },
+    {
+        "ingredient_id": 7,
+        "ingredient_name": "Rosemary"
+    },
+    {
+        "ingredient_id": 8,
+        "ingredient_name": "Egg"
+    },
+    {
+        "ingredient_id": 9,
+        "ingredient_name": "Bacon"
+    },
+    {
+        "ingredient_id": 10,
+        "ingredient_name": "Potatoes"
+    },
+    {
+        "ingredient_id": 11,
+        "ingredient_name": "Eggplant"
+    },
+    {
+        "ingredient_id": 12,
+        "ingredient_name": "Tomatoes"
+    },
+    {
+        "ingredient_id": 13,
+        "ingredient_name": "Basil"
+    },
+    {
+        "ingredient_id": 14,
+        "ingredient_name": "Onion"
+    },
+    {
+        "ingredient_id": 15,
+        "ingredient_name": "Beef mince"
+    },
+    {
+        "ingredient_id": 16,
+        "ingredient_name": "Cheese"
+    },
+    {
+        "ingredient_id": 17,
+        "ingredient_name": "Celery"
+    },
+    {
+        "ingredient_id": 18,
+        "ingredient_name": "Tomato sauce"
+    },
+    {
+        "ingredient_id": 19,
+        "ingredient_name": "Salmon"
+    },
+    {
+        "ingredient_id": 20,
+        "ingredient_name": "Pistachio"
+    },
+    {
+        "ingredient_id": 21,
+        "ingredient_name": "Mustard"
+    },
+    {
+        "ingredient_id": 22,
+        "ingredient_name": "Mushrooms"
+    },
+    {
+        "ingredient_id": 23,
+        "ingredient_name": "Cream"
+    },
+    {
+        "ingredient_id": 24,
+        "ingredient_name": "Cream cheese"
+    },
+    {
+        "ingredient_id": 25,
+        "ingredient_name": "Oats"
+    },
+    {
+        "ingredient_id": 26,
+        "ingredient_name": "Peanut Butter"
+    },
+    {
+        "ingredient_id": 27,
+        "ingredient_name": "Honey"
+    },
+    {
+        "ingredient_id": 28,
+        "ingredient_name": "Pork Chops"
+    },
+    {
+        "ingredient_id": 29,
+        "ingredient_name": "Flour"
+    },
+    {
+        "ingredient_id": 30,
+        "ingredient_name": "Water"
+    },
+    {
+        "ingredient_id": 31,
+        "ingredient_name": "Yeast"
+    },
+    {
+        "ingredient_id": 32,
+        "ingredient_name": "Butter"
+    },
+    {
+        "ingredient_id": 33,
+        "ingredient_name": "Oil"
+    },
+    {
+        "ingredient_id": 34,
+        "ingredient_name": "Olive oil"
+    },
+    {
+        "ingredient_id": 35,
+        "ingredient_name": "Lettuce"
+    },
+    {
+        "ingredient_id": 36,
+        "ingredient_name": "Croutons"
+    },
+    {
+        "ingredient_id": 37,
+        "ingredient_name": "Parmesan"
+    },
+    {
+        "ingredient_id": 38,
+        "ingredient_name": "Mayonnaise"
+    },
+    {
+        "ingredient_id": 39,
+        "ingredient_name": "Couscous"
+    },
+    {
+        "ingredient_id": 40,
+        "ingredient_name": "Rice"
+    },
+    {
+        "ingredient_id": 41,
+        "ingredient_name": "Curry powder"
+    },
+    {
+        "ingredient_id": 42,
+        "ingredient_name": "Paprika"
+    },
+    {
+        "ingredient_id": 43,
+        "ingredient_name": "Chili flakes"
+    },
+    {
+        "ingredient_id": 44,
+        "ingredient_name": "Broccoli"
+    },
+    {
+        "ingredient_id": 45,
+        "ingredient_name": "Garlic"
+    },
+    {
+        "ingredient_id": 46,
+        "ingredient_name": "Beef knuckle"
+    },
+    {
+        "ingredient_id": 47,
+        "ingredient_name": "Worchestershire sauce"
+    },
+    {
+        "ingredient_id": 48,
+        "ingredient_name": "Beef brisket"
+    },
+    {
+        "ingredient_id": 49,
+        "ingredient_name": "Red wine"
+    },
+    {
+        "ingredient_id": 50,
+        "ingredient_name": "White wine"
+    },
+    {
+        "ingredient_id": 51,
+        "ingredient_name": "Vodka"
+    },
+    {
+        "ingredient_id": 52,
+        "ingredient_name": "Dill"
+    },
+    {
+        "ingredient_id": 53,
+        "ingredient_name": "Cherry tomatoes"
+    },
+    {
+        "ingredient_id": 54,
+        "ingredient_name": "Caulfilower"
+    },
+    {
+        "ingredient_id": 55,
+        "ingredient_name": "Chorizo"
+    },
+    {
+        "ingredient_id": 56,
+        "ingredient_name": "Breadcrumbs"
+    },
+    {
+        "ingredient_id": 57,
+        "ingredient_name": "Olives"
+    },
+    {
+        "ingredient_id": 58,
+        "ingredient_name": "Lasagna"
+    },
+    {
+        "ingredient_id": 59,
+        "ingredient_name": "Penne"
+    },
+    {
+        "ingredient_id": 60,
+        "ingredient_name": "Spaghetti"
+    },
+    {
+        "ingredient_id": 61,
+        "ingredient_name": "Farfalle"
+    }
+]

@@ -1,0 +1,37 @@
+[
+    {
+        "user_id": 1,
+        "user_name": "David",
+        "user_surname": "Briffa"
+    },
+    {
+        "user_id": 2,
+        "user_name": "Wayne",
+        "user_surname": "Borg"
+    },
+    {
+        "user_id": 3,
+        "user_name": "Charlie",
+        "user_surname": "Gatt"
+    },
+    {
+        "user_id": 4,
+        "user_name": "Valentina",
+        "user_surname": "Dimech"
+    },
+    {
+        "user_id": 5,
+        "user_name": "Raj",
+        "user_surname": "Kathoor"
+    },
+    {
+        "user_id": 6,
+        "user_name": "Rita",
+        "user_surname": "Grech"
+    },
+    {
+        "user_id": 7,
+        "user_name": "Jessica",
+        "user_surname": "Vella"
+    }
+]

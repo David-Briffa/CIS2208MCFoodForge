@@ -1,0 +1,22 @@
+[
+    {
+        "description": "g",
+        "measurement_unit_id": 1
+    },
+    {
+        "description": "ml",
+        "measurement_unit_id": 2
+    },
+    {
+        "description": "cup",
+        "measurement_unit_id": 3
+    },
+    {
+        "description": "tablespoon",
+        "measurement_unit_id": 4
+    },
+    {
+        "description": "pinch",
+        "measurement_unit_id": 5
+    }
+]
