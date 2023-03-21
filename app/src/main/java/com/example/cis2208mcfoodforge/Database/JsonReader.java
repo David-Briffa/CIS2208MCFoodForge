@@ -100,4 +100,20 @@ public class JsonReader {
         Gson gson = new Gson();
         return gson.fromJson(jsonString, Recipe[].class);
     }
+
+    public static Favourites[] convertJsonToFavourites(Context context) {
+
+        String jsonString = "";
+        try {
+            InputStream inputStream = context.getAssets().open("raw/favourited_list.json");
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            inputStream.read(buffer);
+            inputStream.close();
+            jsonString = new String(buffer, "UTF-8");
+        } catch (IOException e) { e.printStackTrace(); }
+
+        Gson gson = new Gson();
+        return gson.fromJson(jsonString, Favourites[].class);
+    }
 }

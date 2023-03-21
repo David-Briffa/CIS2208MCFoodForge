@@ -3,6 +3,7 @@ package com.example.cis2208mcfoodforge;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.cis2208mcfoodforge.Database.Favourites;
 import com.example.cis2208mcfoodforge.Database.Ingredient;
 import com.example.cis2208mcfoodforge.Database.JsonReader;
 import com.example.cis2208mcfoodforge.Database.MeasurementQty;
@@ -49,18 +50,10 @@ public class MainActivity extends AppCompatActivity {
         MeasurementUnit[] measurementUnits = JsonReader.convertJsonToMeasurementUnit(getApplicationContext());
         User[] users = JsonReader.convertJsonToUser(getApplicationContext());
         RecipeIngredients[] recipeIngredients = JsonReader.convertJsonToRecipeIngredients(getApplicationContext());
-        Recipe[] recipes = JsonReader.convertJsonToRecipe(getApplicationContext());
+        Recipe[] recipes = JsonReader.convertJsonToRecipe(this);
+        Favourites[] favourites = JsonReader.convertJsonToFavourites(getApplicationContext());
 
-        for (Recipe qty : recipes) {
-            int id1 = qty.getRecipe_id();
-            int id2 = qty.getUser_id();
-            String id3 = qty.getFavourite_count();
-            String id5 = qty.getRecipe_description();
-            String id6 = qty.getRecipe_name();
 
-            // Do something with the table data
-            Log.d("MainActivity", "Ingredient " + id1+ id2+ " has " + id3 + id5+ id6+ " id.");
-        }
     }
 
 }
