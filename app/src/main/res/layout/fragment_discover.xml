@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    android:orientation="vertical"
+    android:id="@+id/ScrollView"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.discover.DiscoverFragment">
-
-    <TextView
-        android:id="@+id/titleView"
-        android:layout_width="296dp"
-        android:layout_height="96dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
     <SearchView
         android:id="@+id/searchView"
@@ -24,6 +21,38 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/titleView"
+        android:layout_width="296dp"
+        android:layout_height="96dp"
+        android:text="@string/titleView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+
+    <TextView
+        android:id="@+id/dailyDishesTitleTextView"
+        android:layout_width="168dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/dailyDishesTitleTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleView" />
+
+    <TextView
+        android:id="@+id/dailyDishesDescriptionTextView"
+        android:layout_width="286dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/dailyDishesDescriptionTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.066"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dailyDishesTitleTextView" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/dailyDishesRecyclerView"
@@ -36,33 +65,11 @@
         app:layout_constraintTop_toBottomOf="@+id/dailyDishesDescriptionTextView" />
 
     <TextView
-        android:id="@+id/dailyDishesDescriptionTextView"
-        android:layout_width="286dp"
-        android:layout_height="21dp"
-        android:layout_marginTop="4dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.066"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dailyDishesTitleTextView" />
-
-    <TextView
-        android:id="@+id/dailyDishesTitleTextView"
-        android:layout_width="168dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.041"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleView" />
-
-    <TextView
         android:id="@+id/mostFavouritedTitleView"
         android:layout_width="174dp"
         android:layout_height="34dp"
         android:layout_marginTop="16dp"
-        android:text="TextView"
+        android:text="@string/mostFavouritedTitleView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.04"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,7 +80,7 @@
         android:layout_width="293dp"
         android:layout_height="20dp"
         android:layout_marginTop="4dp"
-        android:text="TextView"
+        android:text="@string/mostFavouritedDescriptionView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.063"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,7 +101,7 @@
         android:layout_width="174dp"
         android:layout_height="34dp"
         android:layout_marginTop="16dp"
-        android:text="TextView"
+        android:text="@string/easiestRecipesTitleView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.04"
         app:layout_constraintStart_toStartOf="parent"
@@ -105,7 +112,7 @@
         android:layout_width="293dp"
         android:layout_height="20dp"
         android:layout_marginTop="4dp"
-        android:text="TextView"
+        android:text="@string/easiestRecipesDescriptionView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.063"
         app:layout_constraintStart_toStartOf="parent"
@@ -121,3 +128,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/easiestRecipesDescriptionView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
