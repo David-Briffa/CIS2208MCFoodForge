@@ -34,10 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        getWindow().setNavigationBarColor(getColor(R.color.orange_200));
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_discover, R.id.navigation_favourites, R.id.navigation_timer)
                 .build();
@@ -52,8 +50,6 @@ public class MainActivity extends AppCompatActivity {
         RecipeIngredients[] recipeIngredients = JsonReader.convertJsonToRecipeIngredients(getApplicationContext());
         Recipe[] recipes = JsonReader.convertJsonToRecipe(this);
         Favourites[] favourites = JsonReader.convertJsonToFavourites(getApplicationContext());
-
-
+        
     }
-
 }
