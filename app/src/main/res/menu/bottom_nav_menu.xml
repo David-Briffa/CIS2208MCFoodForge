@@ -3,17 +3,22 @@
 
     <item
         android:id="@+id/navigation_discover"
-        android:icon="@drawable/ic_discover_unselected_foreground"
-        android:title="@string/title_discover" />
+        android:icon="@drawable/discover_selected"
+        android:title="@string/title_discover"
+        android:tint="@color/maroon_200"
+        />
 
     <item
         android:id="@+id/navigation_favourites"
-        android:icon="@drawable/ic_heart_unselected_foreground"
-        android:title="@string/title_favourites" />
-
+        android:icon="@drawable/favourites_selected"
+        android:title="@string/title_favourites"
+        android:iconTint="@color/maroon_200"
+        />
     <item
         android:id="@+id/navigation_timer"
-        android:icon="@drawable/ic_clock_unselected_foreground"
-        android:title="@string/title_timer" />
+        android:icon="@drawable/timer_selected"
+        android:title="@string/title_timer"
+        android:iconTint="@color/maroon_200"
+        />
 
 </menu>
