@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:id="@+id/ScrollView"
     android:layout_height="wrap_content"
@@ -7,8 +8,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:context=".ui.discover.DiscoverFragment">
@@ -22,33 +21,41 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:queryHint="Find your next recipe..."
-            android:iconifiedByDefault="false"
-            android:font="@font/libre_baskerville_regular"/>
-
-        />
+            android:iconifiedByDefault="false" />
 
         <TextView
             android:id="@+id/titleView"
-            android:layout_width="296dp"
-            android:layout_height="96dp"
+            android:layout_width="240dp"
+            android:layout_height="63dp"
+            android:fontFamily="@font/libre_baskerville_bold"
             android:text="@string/titleView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/searchView"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="@+id/searchView"
             app:layout_constraintTop_toBottomOf="@+id/searchView"
-            android:font="@font/libre_baskerville_regular"/>
-        />
+            android:autoSizeTextType="uniform"/>
+
+        <TextView
+            android:id="@+id/subtitleView"
+            android:layout_width="241dp"
+            android:layout_height="23dp"
+            android:fontFamily="@font/libre_baskerville_italic"
+            android:text="@string/subtitleView"
+            app:layout_constraintEnd_toEndOf="@+id/titleView"
+            app:layout_constraintStart_toStartOf="@+id/titleView"
+            app:layout_constraintTop_toBottomOf="@+id/titleView" />
 
         <TextView
             android:id="@+id/dailyDishesTitleTextView"
             android:layout_width="168dp"
             android:layout_height="35dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/libre_baskerville_regular"
             android:text="@string/dailyDishesTitleTextView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.041"
+            app:layout_constraintHorizontal_bias="0.032"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleView" />
+            app:layout_constraintTop_toBottomOf="@+id/subtitleView" />
 
         <TextView
             android:id="@+id/dailyDishesDescriptionTextView"
@@ -59,7 +66,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.066"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dailyDishesTitleTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/dailyDishesTitleTextView"
+            android:fontFamily="@font/libre_baskerville_italic"
+            />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/dailyDishesRecyclerView"
@@ -80,7 +89,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.04"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dailyDishesRecyclerView" />
+            app:layout_constraintTop_toBottomOf="@+id/dailyDishesRecyclerView"
+            android:fontFamily="@font/libre_baskerville_regular"
+            />
 
         <TextView
             android:id="@+id/mostFavouritedDescriptionView"
@@ -91,7 +102,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.063"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mostFavouritedTitleView" />
+            app:layout_constraintTop_toBottomOf="@+id/mostFavouritedTitleView"
+            android:fontFamily="@font/libre_baskerville_italic"
+            />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/mostFavouritedRecyclerView"
@@ -112,7 +125,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.04"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mostFavouritedRecyclerView" />
+            app:layout_constraintTop_toBottomOf="@+id/mostFavouritedRecyclerView"
+            android:fontFamily="@font/libre_baskerville_regular"
+            />
 
         <TextView
             android:id="@+id/easiestRecipesDescriptionView"
@@ -123,7 +138,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.063"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/easiestRecipesTitleView" />
+            app:layout_constraintTop_toBottomOf="@+id/easiestRecipesTitleView"
+            android:fontFamily="@font/libre_baskerville_italic"
+            />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/easiestRecipesRecyclerView"
@@ -134,5 +151,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/easiestRecipesDescriptionView" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
