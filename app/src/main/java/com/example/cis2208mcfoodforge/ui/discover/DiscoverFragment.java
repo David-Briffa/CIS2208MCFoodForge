@@ -32,7 +32,7 @@ public class DiscoverFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_discover, container, false);
 
         dailyDishesRecycler = view.findViewById(R.id.dailyDishesRecyclerView);
-        dailyDishesRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
+        dailyDishesRecycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         recipes = Arrays.asList(JsonReader.convertJsonToRecipe(requireContext()));
 
         discoverAdapter = new DiscoverAdapter(recipes);

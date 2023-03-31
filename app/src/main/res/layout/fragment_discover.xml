@@ -74,10 +74,9 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/dailyDishesRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="162dp"
+            android:layout_width="410dp"
+            android:layout_height="210dp"
             android:layout_marginTop="8dp"
-            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -111,8 +110,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/mostFavouritedRecyclerView"
-            android:layout_width="603dp"
-            android:layout_height="205dp"
+            android:layout_width="410dp"
+            android:layout_height="210dp"
             android:layout_marginTop="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -147,8 +146,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/easiestRecipesRecyclerView"
-            android:layout_width="603dp"
-            android:layout_height="205dp"
+            android:layout_width="410dp"
+            android:layout_height="210dp"
             android:layout_marginTop="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
