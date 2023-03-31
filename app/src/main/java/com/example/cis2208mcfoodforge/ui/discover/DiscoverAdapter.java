@@ -43,7 +43,7 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.Recipe
 
         public static class RecipeViewHolder extends RecyclerView.ViewHolder {
 
-            private final TextView mRecipeNameTextView;
+            public TextView mRecipeNameTextView;
 
             public RecipeViewHolder(@NonNull View itemView) {
                 super(itemView);
@@ -55,4 +55,5 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.Recipe
             }
         }
     }
+
 

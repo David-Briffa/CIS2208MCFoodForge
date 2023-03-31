@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cis2208mcfoodforge.Database.JsonReader;
@@ -17,30 +18,28 @@ import com.example.cis2208mcfoodforge.R;
 import com.example.cis2208mcfoodforge.databinding.FragmentDiscoverBinding;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class DiscoverFragment extends Fragment {
 
-    private FragmentDiscoverBinding binding;
+    private RecyclerView mRecyclerView;
+    private DiscoverAdapter mAdapter;
+    private List<Recipe> mItems;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        DiscoverViewModel discoverViewModel =
-                new ViewModelProvider(this).get(DiscoverViewModel.class);
-        Recipe[] recipes = JsonReader.convertJsonToRecipe(requireContext());
-        binding = FragmentDiscoverBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+        View view = inflater.inflate(R.layout.fragment_discover, container, false);
 
-        RecyclerView recipeListRecyclerView = root.findViewById(R.id.dailyDishesRecyclerView);
-        DiscoverAdapter recipeListAdapter = new DiscoverAdapter(Arrays.asList(recipes));
-        recipeListRecyclerView.setAdapter(recipeListAdapter);
+        mRecyclerView = view.findViewById(R.id.dailyDishesRecyclerView);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mItems = Arrays.asList(JsonReader.convertJsonToRecipe(requireContext()));
 
-        return root;
+        mAdapter = new DiscoverAdapter(mItems);
+        mRecyclerView.setAdapter(mAdapter);
+
+        return view;
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
+
 }
