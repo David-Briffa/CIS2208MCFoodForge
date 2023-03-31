@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         MeasurementUnit[] measurementUnits = JsonReader.convertJsonToMeasurementUnit(getApplicationContext());
         User[] users = JsonReader.convertJsonToUser(getApplicationContext());
         RecipeIngredients[] recipeIngredients = JsonReader.convertJsonToRecipeIngredients(getApplicationContext());
-        Recipe[] recipes = JsonReader.convertJsonToRecipe(this);
         Favourites[] favourites = JsonReader.convertJsonToFavourites(getApplicationContext());
         
     }
