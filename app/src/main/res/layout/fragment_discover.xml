@@ -64,20 +64,20 @@
             android:layout_width="286dp"
             android:layout_height="21dp"
             android:layout_marginTop="4dp"
+            android:fontFamily="@font/libre_baskerville_italic"
             android:text="@string/dailyDishesDescriptionTextView"
             android:textSize="17sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.066"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dailyDishesTitleTextView"
-            android:fontFamily="@font/libre_baskerville_italic"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/dailyDishesTitleTextView" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/dailyDishesRecyclerView"
-            android:layout_width="601dp"
-            android:layout_height="200dp"
-            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="162dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -101,14 +101,13 @@
             android:layout_width="293dp"
             android:layout_height="20dp"
             android:layout_marginTop="4dp"
+            android:fontFamily="@font/libre_baskerville_italic"
             android:text="@string/mostFavouritedDescriptionView"
             android:textSize="17sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.063"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mostFavouritedTitleView"
-            android:fontFamily="@font/libre_baskerville_italic"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/mostFavouritedTitleView" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/mostFavouritedRecyclerView"
@@ -138,14 +137,13 @@
             android:layout_width="293dp"
             android:layout_height="20dp"
             android:layout_marginTop="4dp"
+            android:fontFamily="@font/libre_baskerville_italic"
             android:text="@string/easiestRecipesDescriptionView"
             android:textSize="17sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.063"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/easiestRecipesTitleView"
-            android:fontFamily="@font/libre_baskerville_italic"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/easiestRecipesTitleView" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/easiestRecipesRecyclerView"

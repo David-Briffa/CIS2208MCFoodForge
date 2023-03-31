@@ -14,10 +14,9 @@ import com.example.cis2208mcfoodforge.R;
 import java.util.List;
 
 public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.RecipeViewHolder> {
-    private final List<Recipe> mRecipeNames;
-
+    private final List<Recipe> recipeNames;
     public DiscoverAdapter(List<Recipe> recipeNames) {
-            mRecipeNames = recipeNames;
+            this.recipeNames = recipeNames;
         }
 
         @NonNull
@@ -28,30 +27,28 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.Recipe
             return new RecipeViewHolder(view);
         }
 
-
-
-    @Override
+        @Override
         public void onBindViewHolder(@NonNull RecipeViewHolder holder, int position) {
-            String recipeName = mRecipeNames.get(position).getRecipe_name();
+            String recipeName = recipeNames.get(position).getRecipe_name();
             holder.bind(recipeName);
         }
 
         @Override
         public int getItemCount() {
-            return mRecipeNames.size();
+            return recipeNames.size();
         }
 
         public static class RecipeViewHolder extends RecyclerView.ViewHolder {
 
-            public TextView mRecipeNameTextView;
+            public TextView recipeNameTextView;
 
             public RecipeViewHolder(@NonNull View itemView) {
                 super(itemView);
-                mRecipeNameTextView = itemView.findViewById(R.id.recipeNameTextView);
+                recipeNameTextView = itemView.findViewById(R.id.recipeNameTextView);
             }
 
             public void bind(String recipeName) {
-                mRecipeNameTextView.setText(recipeName);
+                recipeNameTextView.setText(recipeName);
             }
         }
     }

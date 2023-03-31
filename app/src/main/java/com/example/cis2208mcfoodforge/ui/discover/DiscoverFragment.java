@@ -23,20 +23,20 @@ import java.util.Objects;
 
 public class DiscoverFragment extends Fragment {
 
-    private RecyclerView mRecyclerView;
-    private DiscoverAdapter mAdapter;
-    private List<Recipe> mItems;
+    private RecyclerView dailyDishesRecycler;
+    private DiscoverAdapter discoverAdapter;
+    private List<Recipe> recipes;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_discover, container, false);
 
-        mRecyclerView = view.findViewById(R.id.dailyDishesRecyclerView);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mItems = Arrays.asList(JsonReader.convertJsonToRecipe(requireContext()));
+        dailyDishesRecycler = view.findViewById(R.id.dailyDishesRecyclerView);
+        dailyDishesRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recipes = Arrays.asList(JsonReader.convertJsonToRecipe(requireContext()));
 
-        mAdapter = new DiscoverAdapter(mItems);
-        mRecyclerView.setAdapter(mAdapter);
+        discoverAdapter = new DiscoverAdapter(recipes);
+        dailyDishesRecycler.setAdapter(discoverAdapter);
 
         return view;
     }
