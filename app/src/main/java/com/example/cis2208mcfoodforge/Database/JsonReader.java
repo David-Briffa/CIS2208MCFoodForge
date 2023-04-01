@@ -11,7 +11,7 @@ public class JsonReader {
 
         String jsonString = "";
         try {
-            InputStream inputStream = context.getAssets().open("raw/ingredient.json");
+            InputStream inputStream = context.getAssets().open("raw/JsonDB/ingredient.json");
             int size = inputStream.available();
             byte[] buffer = new byte[size];
             inputStream.read(buffer);
@@ -26,7 +26,7 @@ public class JsonReader {
 
         String jsonString = "";
         try {
-            InputStream inputStream = context.getAssets().open("raw/measurement_qty.json");
+            InputStream inputStream = context.getAssets().open("raw/JsonDB/measurement_qty.json");
             int size = inputStream.available();
             byte[] buffer = new byte[size];
             inputStream.read(buffer);
@@ -42,7 +42,7 @@ public class JsonReader {
 
         String jsonString = "";
         try {
-            InputStream inputStream = context.getAssets().open("raw/measurement_unit.json");
+            InputStream inputStream = context.getAssets().open("raw/JsonDB/measurement_unit.json");
             int size = inputStream.available();
             byte[] buffer = new byte[size];
             inputStream.read(buffer);
@@ -57,7 +57,7 @@ public class JsonReader {
 
         String jsonString = "";
         try {
-            InputStream inputStream = context.getAssets().open("raw/user.json");
+            InputStream inputStream = context.getAssets().open("raw/JsonDB/user.json");
             int size = inputStream.available();
             byte[] buffer = new byte[size];
             inputStream.read(buffer);
@@ -73,7 +73,7 @@ public class JsonReader {
 
         String jsonString = "";
         try {
-            InputStream inputStream = context.getAssets().open("raw/recipe_ingredients.json");
+            InputStream inputStream = context.getAssets().open("raw/JsonDB/recipe_ingredients.json");
             int size = inputStream.available();
             byte[] buffer = new byte[size];
             inputStream.read(buffer);
@@ -89,7 +89,7 @@ public class JsonReader {
 
         String jsonString = "";
         try {
-            InputStream inputStream = context.getAssets().open("raw/recipe.json");
+            InputStream inputStream = context.getAssets().open("raw/JsonDB/recipe.json");
             int size = inputStream.available();
             byte[] buffer = new byte[size];
             inputStream.read(buffer);
@@ -105,7 +105,7 @@ public class JsonReader {
 
         String jsonString = "";
         try {
-            InputStream inputStream = context.getAssets().open("raw/favourited_list.json");
+            InputStream inputStream = context.getAssets().open("raw/JsonDB/favourited_list.json");
             int size = inputStream.available();
             byte[] buffer = new byte[size];
             inputStream.read(buffer);
