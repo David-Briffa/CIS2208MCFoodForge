@@ -61,7 +61,7 @@
 
         <TextView
             android:id="@+id/dailyDishesDescriptionTextView"
-            android:layout_width="286dp"
+            android:layout_width="320dp"
             android:layout_height="21dp"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/libre_baskerville_italic"
@@ -75,7 +75,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/dailyDishesRecyclerView"
             android:layout_width="410dp"
-            android:layout_height="210dp"
+            android:layout_height="320dp"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -97,7 +97,7 @@
 
         <TextView
             android:id="@+id/mostFavouritedDescriptionView"
-            android:layout_width="293dp"
+            android:layout_width="320dp"
             android:layout_height="20dp"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/libre_baskerville_italic"
@@ -111,7 +111,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/mostFavouritedRecyclerView"
             android:layout_width="410dp"
-            android:layout_height="210dp"
+            android:layout_height="320dp"
             android:layout_marginTop="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -133,7 +133,7 @@
 
         <TextView
             android:id="@+id/easiestRecipesDescriptionView"
-            android:layout_width="293dp"
+            android:layout_width="320dp"
             android:layout_height="20dp"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/libre_baskerville_italic"
@@ -147,7 +147,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/easiestRecipesRecyclerView"
             android:layout_width="410dp"
-            android:layout_height="210dp"
+            android:layout_height="320dp"
             android:layout_marginTop="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

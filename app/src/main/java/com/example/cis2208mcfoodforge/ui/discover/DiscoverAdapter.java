@@ -11,8 +11,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.cis2208mcfoodforge.Database.Recipe;
 import com.example.cis2208mcfoodforge.R;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.HashMap;
 import java.util.List;
@@ -25,6 +29,8 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.Recipe
     public DiscoverAdapter(List<Recipe> recipeNames, Context context) {
             this.recipeNames = recipeNames;
             this.context = context;
+
+        //placing images into a hashmap, the key is the recipe ID, the value is the image path
         imageFilenameMap = new HashMap<>();
         imageFilenameMap.put(1, "raw/Images/BeefLasagna.jpg");
         imageFilenameMap.put(2, "raw/Images/ChickenPasta.jpg");
@@ -71,11 +77,15 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.Recipe
         public void onBindViewHolder(@NonNull RecipeViewHolder holder, int position) {
             Recipe recipe = recipeNames.get(position);
             String imageFilename = imageFilenameMap.get(recipe.getRecipe_id());
+            RequestOptions requestOptions = new RequestOptions();
 
             holder.bind(recipe.getRecipe_name());
 
             Glide.with(context)
                     .load("file:///android_asset/" + imageFilename)
+                    .apply(requestOptions
+                            .transforms(new CenterCrop(), new RoundedCorners(40))
+                            .override(600))
                     .into(holder.recipeImageView);
         }
 
