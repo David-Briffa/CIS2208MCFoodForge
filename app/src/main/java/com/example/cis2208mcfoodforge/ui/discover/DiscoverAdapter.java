@@ -1,13 +1,16 @@
 package com.example.cis2208mcfoodforge.ui.discover;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.cis2208mcfoodforge.Database.Recipe;
 import com.example.cis2208mcfoodforge.R;
 
@@ -17,9 +20,11 @@ import java.util.List;
 public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.RecipeViewHolder> {
     private final List<Recipe> recipeNames;
     private HashMap<Integer, String> imageFilenameMap;
+    private Context context;
 
-    public DiscoverAdapter(List<Recipe> recipeNames) {
+    public DiscoverAdapter(List<Recipe> recipeNames, Context context) {
             this.recipeNames = recipeNames;
+            this.context = context;
         imageFilenameMap = new HashMap<>();
         imageFilenameMap.put(1, "raw/Images/BeefLasagna.jpg");
         imageFilenameMap.put(2, "raw/Images/ChickenPasta.jpg");
@@ -64,9 +69,16 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.Recipe
 
         @Override
         public void onBindViewHolder(@NonNull RecipeViewHolder holder, int position) {
-            String recipeName = recipeNames.get(position).getRecipe_name();
-            holder.bind(recipeName);
+            Recipe recipe = recipeNames.get(position);
+            String imageFilename = imageFilenameMap.get(recipe.getRecipe_id());
+
+            holder.bind(recipe.getRecipe_name());
+
+            Glide.with(context)
+                    .load("file:///android_asset/" + imageFilename)
+                    .into(holder.recipeImageView);
         }
+
 
         @Override
         public int getItemCount() {
@@ -76,10 +88,13 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.Recipe
         public static class RecipeViewHolder extends RecyclerView.ViewHolder {
 
             public TextView recipeNameTextView;
+            public ImageView recipeImageView;
 
             public RecipeViewHolder(@NonNull View itemView) {
                 super(itemView);
                 recipeNameTextView = itemView.findViewById(R.id.recipeNameTextView);
+                recipeImageView = itemView.findViewById(R.id.recipeImageView);
+
             }
 
             public void bind(String recipeName) {

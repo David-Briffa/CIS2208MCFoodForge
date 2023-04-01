@@ -67,9 +67,9 @@ public class DiscoverFragment extends Fragment {
             }
         }
 
-        dailyDishesAdapter = new DiscoverAdapter(dailyRecipes);
-        mostFavouritedAdapter = new DiscoverAdapter(mostFavourited);
-        easiestRecipesAdapter = new DiscoverAdapter(easiestRecipes);
+        dailyDishesAdapter = new DiscoverAdapter(dailyRecipes, getContext());
+        mostFavouritedAdapter = new DiscoverAdapter(mostFavourited, getContext());
+        easiestRecipesAdapter = new DiscoverAdapter(easiestRecipes, getContext());
 
         dailyDishesRecycler.setAdapter(dailyDishesAdapter);
         mostFavouritedRecycler.setAdapter(mostFavouritedAdapter);
