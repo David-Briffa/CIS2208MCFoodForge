@@ -33,6 +33,14 @@ public class RecipeDetailsAdapter extends BaseAdapter {
     private List<MeasurementUnit> measurementUnits;
     private HashMap<Integer, String> imageHashMap;
 
+    public RecipeDetailsAdapter(Context context, List<Recipe> recipes) {
+        this.context = context;
+        this.recipes = recipes;
+
+        //placing images into a hashmap, the key is the recipe ID, the value is the image path
+        imageHashMap = new HashMap<>();
+        MapImages(imageHashMap);
+    }
     @Override
     public int getCount() {
         return recipes.size();
@@ -52,36 +60,13 @@ public class RecipeDetailsAdapter extends BaseAdapter {
     @Override
     public View getView(int position,  View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.activity_recipe_details, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.recipe_list_item, parent, false);
         }
 
-        imageHashMap = new HashMap<>();
-        MapImages(imageHashMap);
-
-        // Bind the data to the views
-        Recipe recipe = (Recipe) getItem(position);
-        ImageView imageView = convertView.findViewById(R.id.recipeImageView);
-        TextView nameTextView = convertView.findViewById(R.id.recipeNameTextView);
-        TextView descriptionTextView = convertView.findViewById(R.id.recipeDescriptionTextView);
-        TextView difficultyTextview = convertView.findViewById(R.id.recipeDifficultyTextView);
-        TextView favouriteCountTextView = convertView.findViewById(R.id.favouriteCountTextView);
-
-        RequestOptions requestOptions = new RequestOptions();
-
-        Glide.with(context)
-                .load("file:///android_asset/" + recipe.getRecipe_id())
-                .apply(requestOptions
-                        .transforms(new CenterCrop(), new RoundedCorners(40))
-                        .override(600)).into(imageView);
-        nameTextView.setText(recipe.getRecipe_name());
-        descriptionTextView.setText(recipe.getRecipe_description());
-        difficultyTextview.setText(recipe.getDifficulty());
-        favouriteCountTextView.setText(recipe.getFavourite_count());
 
         return convertView;
     }
-
-    public void MapImages(HashMap<Integer, String> hashmap){
+    public void MapImages(HashMap<Integer, String> hashmap) {
         hashmap.put(1, "raw/Images/BeefLasagna.jpg");
         hashmap.put(2, "raw/Images/ChickenPasta.jpg");
         hashmap.put(3, "raw/Images/RibeyeMushroom.jpg");
@@ -112,5 +97,8 @@ public class RecipeDetailsAdapter extends BaseAdapter {
         hashmap.put(28, "raw/Images/MashedPotatoes.webp");
         hashmap.put(29, "raw/Images/MushroomSauce.jpg");
         hashmap.put(30, "raw/Images/PizzaDough.webp");
+
     }
-}
+
+    }
+

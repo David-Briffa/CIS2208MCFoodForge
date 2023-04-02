@@ -105,7 +105,9 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.Recipe
                     intent.putExtra("favouriteCount", selectedRecipe.getFavourite_count());
                     intent.putExtra("id", selectedRecipe.getRecipe_id());
                     intent.putExtra("difficulty", selectedRecipe.getDifficulty());
-
+                    System.out.println(selectedRecipe.getDifficulty() + " HELLLOOOOO ");
+                    System.out.println(selectedRecipe.getFavourite_count());
+                    System.out.println(selectedRecipe.getRecipe_id());
                     // Launch the new activity
                     context.startActivity(intent);
                 }

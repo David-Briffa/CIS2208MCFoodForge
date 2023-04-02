@@ -8,16 +8,17 @@
 
     <ImageView
         android:id="@+id/recipeImageView"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/ic_launcher_foreground"/>
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:src="@drawable/ic_launcher_foreground"
+        />
 
     <TextView
         android:id="@+id/recipeNameTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="40sp"
         android:textStyle="bold"
         android:paddingTop="16dp"
         android:paddingBottom="8dp"/>
