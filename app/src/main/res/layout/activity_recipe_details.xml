@@ -1,4 +1,12 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:id="@+id/ScrollView"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/detailsLinearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,41 +16,60 @@
 
     <ImageView
         android:id="@+id/recipeImageView"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
         android:scaleType="centerCrop"
-        android:layout_width="170dp"
-        android:layout_height="170dp"
         android:src="@drawable/ic_launcher_foreground"
-        />
+        app:layout_constraintEnd_toEndOf="@+id/recipeNameTextView"
+        app:layout_constraintStart_toStartOf="@+id/recipeNameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/recipeNameTextView" />
 
     <TextView
         android:id="@+id/recipeNameTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="8dp"
         android:textSize="40sp"
         android:textStyle="bold"
-        android:paddingTop="16dp"
-        android:paddingBottom="8dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/recipeDifficultyTextView"
+        android:layout_width="150dp"
+        android:layout_height="35dp"
+        android:paddingBottom="8dp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/recipeImageView"
+        app:layout_constraintHorizontal_bias="0.07"
+        app:layout_constraintStart_toStartOf="@+id/recipeImageView"
+        app:layout_constraintTop_toBottomOf="@+id/recipeImageView" />
+
+    <TextView
+        android:id="@+id/favouriteCountTextView"
+        android:layout_width="180dp"
+        android:layout_height="35dp"
+        android:paddingBottom="8dp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/recipeImageView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/recipeDifficultyTextView"
+        app:layout_constraintTop_toBottomOf="@+id/recipeImageView" />
 
     <TextView
         android:id="@+id/recipeDescriptionTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:paddingBottom="8dp"/>
-
-    <TextView
-        android:id="@+id/recipeDifficultyTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:paddingBottom="8dp"/>
-
-    <TextView
-        android:id="@+id/favouriteCountTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:paddingBottom="8dp"/>
+        android:paddingBottom="8dp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/favouriteCountTextView"
+        app:layout_constraintStart_toStartOf="@+id/favouriteCountTextView"
+        app:layout_constraintTop_toBottomOf="@+id/favouriteCountTextView" />
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
