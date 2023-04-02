@@ -11,8 +11,15 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.cis2208mcfoodforge.Database.Ingredient;
+import com.example.cis2208mcfoodforge.Database.JsonReader;
+import com.example.cis2208mcfoodforge.Database.Recipe;
+import com.example.cis2208mcfoodforge.Database.RecipeIngredients;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 
 public class RecipeDetailsActivity extends AppCompatActivity {
@@ -24,11 +31,19 @@ public class RecipeDetailsActivity extends AppCompatActivity {
     private TextView favouriteCountView;
 
     private HashMap<Integer, String> imageHashMap;
+    private List<Ingredient> ingredients;
+    private List<Recipe> recipes;
+    private List<RecipeIngredients> recipeIngredients;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_details);
+        ingredients = Arrays.asList(JsonReader.convertJsonToIngredient(this));
+        recipes = Arrays.asList(JsonReader.convertJsonToRecipe(this));
+        recipeIngredients = Arrays.asList(JsonReader.convertJsonToRecipeIngredients(this));
+
 
         imageHashMap = new HashMap<>();
         MapImages(imageHashMap);
@@ -40,7 +55,23 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         int favouriteCount = intent.getIntExtra("favouriteCount", 0); // default value 0
         int foodImageId = intent.getIntExtra("id", 0);
         int difficulty = intent.getIntExtra("difficulty",0);
+        List<Integer> ingredientsUsed = new ArrayList<>();
         String imageFilename = imageHashMap.get(foodImageId);
+
+            for(RecipeIngredients recIngredient : recipeIngredients) {
+                int commonIng = recIngredient.getRecipe_id();
+                if (commonIng == foodImageId) {
+                    ingredientsUsed.add(recIngredient.getIngredient_id());
+                    System.out.println(ingredientsUsed.size());
+                }
+            }
+            for(int id : ingredientsUsed){
+                for(int i=0; i<ingredients.size(); i++){
+                    if(ingredients.get(i).getIngredient_id() == id){
+                        System.out.println(ingredients.get(i).getIngredient_name());
+                    }
+                }
+            }
 
         imageView = findViewById(R.id.recipeImageView);
         recipeNameView = findViewById(R.id.recipeNameTextView);
