@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/recipeLinearLayout"
+    android:id="@+id/detailsLinearLayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
     android:layout_margin="8dp">
-
 
     <ImageView
         android:id="@+id/recipeImageView"
@@ -44,5 +42,6 @@
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:paddingBottom="8dp"/>
+
 
 </LinearLayout>

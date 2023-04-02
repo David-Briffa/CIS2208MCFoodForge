@@ -1,5 +1,6 @@
 package com.example.cis2208mcfoodforge.ui.discover;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -79,7 +80,7 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.Recipe
         }
 
         @Override
-        public void onBindViewHolder(@NonNull RecipeViewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull RecipeViewHolder holder, @SuppressLint("RecyclerView") int position) {
             Recipe recipe = recipes.get(position);
             String imageFilename = imageHashMap.get(recipe.getRecipe_id());
             RequestOptions requestOptions = new RequestOptions();
