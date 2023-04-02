@@ -29,6 +29,8 @@ public class RecipeDetailsActivity extends AppCompatActivity {
     private TextView recipeDescriptionView;
     private TextView recipeDifficultyView;
     private TextView favouriteCountView;
+    private TextView ingredientView;
+
 
     private HashMap<Integer, String> imageHashMap;
     private List<Ingredient> ingredients;
@@ -65,25 +67,32 @@ public class RecipeDetailsActivity extends AppCompatActivity {
                     System.out.println(ingredientsUsed.size());
                 }
             }
-            for(int id : ingredientsUsed){
-                for(int i=0; i<ingredients.size(); i++){
-                    if(ingredients.get(i).getIngredient_id() == id){
-                        System.out.println(ingredients.get(i).getIngredient_name());
-                    }
-                }
-            }
+
 
         imageView = findViewById(R.id.recipeImageView);
         recipeNameView = findViewById(R.id.recipeNameTextView);
         recipeDescriptionView = findViewById(R.id.recipeDescriptionTextView);
         recipeDifficultyView = findViewById(R.id.recipeDifficultyTextView);
         favouriteCountView = findViewById(R.id.favouriteCountTextView);
+        ingredientView = findViewById(R.id.ingredientsTextView);
+
 
         recipeNameView.setText(foodName);
         recipeDescriptionView.setText(foodDescription);
         recipeDifficultyView.setText("Difficulty: " + difficulty);
         favouriteCountView.setText("Favourited by: " + favouriteCount + " users");
+        StringBuilder ingredientsForView = new StringBuilder();
 
+        for(int id : ingredientsUsed){
+            for(int i=0; i<ingredients.size(); i++){
+                if(ingredients.get(i).getIngredient_id() == id){
+                    ingredientsForView.append(ingredients.get(i).getIngredient_name());
+                    ingredientsForView.append("\n");
+                    ingredientView.setText(ingredientsForView);
+
+                }
+            }
+        }
         RequestOptions requestOptions = new RequestOptions();
 
         // Load the image using Glide or any other image loading library
