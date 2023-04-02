@@ -19,6 +19,8 @@ import com.example.cis2208mcfoodforge.Database.Recipe;
 import com.example.cis2208mcfoodforge.Database.RecipeIngredients;
 import com.example.cis2208mcfoodforge.R;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 public class RecipeDetailsAdapter extends BaseAdapter {
@@ -57,6 +59,7 @@ public class RecipeDetailsAdapter extends BaseAdapter {
         TextView nameTextView = convertView.findViewById(R.id.recipeNameTextView);
         TextView descriptionTextView = convertView.findViewById(R.id.recipeDescriptionTextView);
         TextView difficultyTextview = convertView.findViewById(R.id.recipeDifficultyTextView);
+        TextView favouriteCountTextView = convertView.findViewById(R.id.favouriteCountTextView);
 
         RequestOptions requestOptions = new RequestOptions();
 
@@ -67,7 +70,9 @@ public class RecipeDetailsAdapter extends BaseAdapter {
                         .override(600))                .into(imageView);
         nameTextView.setText(recipe.getRecipe_name());
         descriptionTextView.setText(recipe.getRecipe_description());
+        difficultyTextview.setText(recipe.getDifficulty());
+        favouriteCountTextView.setText(recipe.getFavourite_count());
 
-        // Return the view
-        return convertView;    }
+        return convertView;
+    }
 }

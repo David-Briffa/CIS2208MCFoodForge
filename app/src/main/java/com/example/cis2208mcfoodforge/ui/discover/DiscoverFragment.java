@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.cis2208mcfoodforge.Database.JsonReader;
 import com.example.cis2208mcfoodforge.Database.Recipe;
 import com.example.cis2208mcfoodforge.R;
-import com.example.cis2208mcfoodforge.databinding.FragmentDiscoverBinding;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,40 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:id="@+id/recipeLinearLayout"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="16dp"
     android:orientation="vertical"
-    android:layout_margin="8dp"
-    >
+    android:padding="16dp"
+    android:layout_margin="8dp">
 
 
     <ImageView
         android:id="@+id/recipeImageView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
         android:scaleType="centerCrop"
-        android:layout_width="170dp"
-        android:layout_height="170dp"
-        android:src="@drawable/ic_launcher_foreground"
-        android:onClick="ToDo"/>
+        android:src="@drawable/ic_launcher_foreground"/>
+
     <TextView
         android:id="@+id/recipeNameTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="25sp"
-        android:maxWidth="150dp"
-        android:ellipsize="end" />
+        android:textStyle="bold"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp"/>
+
     <TextView
         android:id="@+id/recipeDescriptionTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:maxWidth="150dp"
-        android:ellipsize="end" />
+        android:textSize="16sp"
+        android:paddingBottom="8dp"/>
+
     <TextView
         android:id="@+id/recipeDifficultyTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:maxWidth="150dp"
-        android:ellipsize="end" />
+        android:textSize="16sp"
+        android:paddingBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/favouriteCountTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:paddingBottom="8dp"/>
 
 </LinearLayout>
