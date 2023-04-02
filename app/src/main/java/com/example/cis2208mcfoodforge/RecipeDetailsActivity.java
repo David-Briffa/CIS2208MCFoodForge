@@ -6,6 +6,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
+
 
 public class RecipeDetailsActivity extends AppCompatActivity {
 
@@ -26,22 +28,23 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         //getting food details from extras
         String foodName = intent.getStringExtra("recipeName");
         String foodDescription = intent.getStringExtra("description");
-        String favouriteCount = intent.getStringExtra("favouriteCount");
-        String foodImageId = intent.getStringExtra("id");
-        String difficulty = intent.getStringExtra("difficulty");
+        int favouriteCount = intent.getIntExtra("favouriteCount", 0); // default value 0
+        int foodImageId = intent.getIntExtra("id", 0);
+        int difficulty = intent.getIntExtra("difficulty",0);
 
-        imageView = findViewById(R.id.recipeImageView);
+        //imageView = findViewById(R.id.recipeImageView);
         recipeNameView = findViewById(R.id.recipeNameTextView);
         recipeDescriptionView = findViewById(R.id.recipeDescriptionTextView);
         recipeDifficultyView = findViewById(R.id.recipeDifficultyTextView);
         favouriteCountView = findViewById(R.id.favouriteCountTextView);
 
-
-        //assigning the content
         recipeNameView.setText(foodName);
         recipeDescriptionView.setText(foodDescription);
-        recipeDifficultyView.setText(difficulty);
-        favouriteCountView.setText(favouriteCount);
+        recipeDifficultyView.setText("Difficulty: " + difficulty);
+        favouriteCountView.setText("Favourited by: " + favouriteCount + " users");
+
+// Load the image using Glide or any other image loading library
+        //Glide.with(this).load(foodImageId).into(imageView);
     }
 
 
