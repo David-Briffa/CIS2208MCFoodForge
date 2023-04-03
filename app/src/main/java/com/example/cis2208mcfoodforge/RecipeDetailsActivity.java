@@ -74,7 +74,15 @@ public class RecipeDetailsActivity extends AppCompatActivity {
                     System.out.println(ingredientsUsed.size());
                 }
             }
+        DbHelper dbHelper = new DbHelper(RecipeDetailsActivity.this);
+        boolean isFavorite = dbHelper.isFavoriteButton(foodImageId);
 
+        if(isFavorite){
+            addButton.setBackgroundResource(R.drawable.ic_heart_selected_foreground);
+        }
+        else{
+            addButton.setBackgroundResource(R.drawable.ic_heart_unselected_foreground);
+        }
 
         imageView = findViewById(R.id.recipeImageView);
         recipeNameView = findViewById(R.id.recipeNameTextView);
@@ -110,34 +118,24 @@ public class RecipeDetailsActivity extends AppCompatActivity {
                         .override(600))
                 .into(imageView);
 
-
-        DbHelper dbHelper = new DbHelper(RecipeDetailsActivity.this);
-
-        boolean isFavorite = dbHelper.isFavoriteButton(foodImageId);
-        if (isFavorite) {
-            // Set the button as a favorite
-            addButton.setBackgroundResource(R.drawable.ic_heart_selected_foreground);
-        } else {
-            // Set the button as not a favorite
-            addButton.setBackgroundResource(R.drawable.ic_heart_unselected_foreground);
-        }
-
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DbHelper dbHelper = new DbHelper(RecipeDetailsActivity.this);
+                boolean isFavorite = dbHelper.isFavoriteButton(foodImageId);
+
                 if(isFavorite){
                     dbHelper.removeFavourite(foodImageId);
-
+                    addButton.setBackgroundResource(R.drawable.ic_heart_unselected_foreground);
                 }
                 else{
                     dbHelper.addFavourite(foodImageId);
+                    addButton.setBackgroundResource(R.drawable.ic_heart_selected_foreground);
                 }
-
-
             }
         });
     }
+
 
 
     public void MapImages(HashMap<Integer, String> hashmap){

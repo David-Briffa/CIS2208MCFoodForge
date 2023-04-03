@@ -95,7 +95,6 @@
         android:id="@+id/add_to_favourites_button"
         android:layout_width="66dp"
         android:layout_height="63dp"
-        android:background="@drawable/ic_heart_unselected_foreground"
         app:layout_constraintEnd_toEndOf="@+id/recipeImageView"
         app:layout_constraintStart_toStartOf="@+id/recipeImageView"
         app:layout_constraintTop_toBottomOf="@+id/recipeImageView" />

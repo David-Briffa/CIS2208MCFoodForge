@@ -38,4 +38,5 @@ public class Recipe {
         this.user_id = user_id;
         this.recipe_id = recipe_id;
     }
+
 }
