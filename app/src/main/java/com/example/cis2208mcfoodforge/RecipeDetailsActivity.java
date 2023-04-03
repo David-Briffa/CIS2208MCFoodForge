@@ -65,8 +65,9 @@ public class RecipeDetailsActivity extends AppCompatActivity {
             }
 
         String author = "";
-            for(User user : users) {
-                int userId = user.getUser_id();
+        int userId = 0;
+        for(User user : users) {
+               userId = user.getUser_id();
                 if (userId == authorId) {
                     author = user.getUser_name() + " " + user.getUser_surname();
             }
