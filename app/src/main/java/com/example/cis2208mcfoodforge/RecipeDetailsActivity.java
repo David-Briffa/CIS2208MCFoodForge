@@ -110,16 +110,35 @@ public class RecipeDetailsActivity extends AppCompatActivity {
                         .override(600))
                 .into(imageView);
 
+
+        DbHelper dbHelper = new DbHelper(RecipeDetailsActivity.this);
+
+        boolean isFavorite = dbHelper.isFavoriteButton(foodImageId);
+        if (isFavorite) {
+            // Set the button as a favorite
+            addButton.setBackgroundResource(R.drawable.ic_heart_selected_foreground);
+        } else {
+            // Set the button as not a favorite
+            addButton.setBackgroundResource(R.drawable.ic_heart_unselected_foreground);
+        }
+
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DbHelper dbHelper = new DbHelper(RecipeDetailsActivity.this);
+                if(isFavorite){
+                    dbHelper.removeFavourite(foodImageId);
 
-                dbHelper.addFavourite(foodImageId);
+                }
+                else{
+                    dbHelper.addFavourite(foodImageId);
+                }
+
 
             }
         });
     }
+
 
     public void MapImages(HashMap<Integer, String> hashmap){
         hashmap.put(1, "raw/Images/BeefLasagna.jpg");

@@ -26,29 +26,18 @@
 
     <TextView
         android:id="@+id/recipeNameTextView"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:paddingTop="5dp"
         android:paddingBottom="8dp"
-        android:textSize="40sp"
-        android:textStyle="bold"
         android:textAlignment="center"
+        android:textSize="35sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/recipeDifficultyTextView"
-        android:layout_width="150dp"
-        android:layout_height="35dp"
-        android:paddingBottom="8dp"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/recipeImageView"
-        app:layout_constraintHorizontal_bias="0.07"
-        app:layout_constraintStart_toStartOf="@+id/recipeImageView"
-        app:layout_constraintTop_toBottomOf="@+id/recipeImageView" />
 
     <TextView
         android:id="@+id/favouriteCountTextView"
@@ -56,20 +45,18 @@
         android:layout_height="35dp"
         android:paddingBottom="8dp"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/recipeImageView"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/recipeDifficultyTextView"
-        app:layout_constraintTop_toBottomOf="@+id/recipeImageView" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_to_favourites_button" />
 
     <TextView
-        android:id="@+id/recipeDescriptionTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/recipeDifficultyTextView"
+        android:layout_width="150dp"
+        android:layout_height="35dp"
         android:paddingBottom="8dp"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/favouriteCountTextView"
-        app:layout_constraintStart_toStartOf="@+id/favouriteCountTextView"
-        app:layout_constraintTop_toBottomOf="@+id/favouriteCountTextView" />
+        app:layout_constraintEnd_toStartOf="@+id/favouriteCountTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_to_favourites_button" />
 
     <TextView
         android:id="@+id/ingredientsTextView"
@@ -78,6 +65,7 @@
         android:paddingBottom="8dp"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/ingredientsTitle"
+        app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toStartOf="@+id/ingredientsTitle"
         app:layout_constraintTop_toBottomOf="@+id/ingredientsTitle" />
 
@@ -89,20 +77,28 @@
         android:textSize="30sp"
 
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.042"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recipeDescriptionTextView" />
 
+    <TextView
+        android:id="@+id/recipeDescriptionTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/favouriteCountTextView"
+        app:layout_constraintStart_toStartOf="@+id/recipeDifficultyTextView"
+        app:layout_constraintTop_toBottomOf="@+id/favouriteCountTextView" />
+
     <Button
         android:id="@+id/add_to_favourites_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Button"
+        android:layout_width="66dp"
+        android:layout_height="63dp"
+        android:background="@drawable/ic_heart_unselected_foreground"
         app:layout_constraintEnd_toEndOf="@+id/recipeImageView"
-        app:layout_constraintHorizontal_bias="0.914"
         app:layout_constraintStart_toStartOf="@+id/recipeImageView"
-        app:layout_constraintTop_toTopOf="@+id/recipeImageView" />
+        app:layout_constraintTop_toBottomOf="@+id/recipeImageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

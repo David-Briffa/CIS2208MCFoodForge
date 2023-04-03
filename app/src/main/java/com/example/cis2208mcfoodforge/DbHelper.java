@@ -1,15 +1,15 @@
 package com.example.cis2208mcfoodforge;
 
-import android.app.DownloadManager;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import com.example.cis2208mcfoodforge.Database.RecipeIngredients;
+import com.example.cis2208mcfoodforge.databases.DatabaseContract;
 
 public class DbHelper extends SQLiteOpenHelper {
     private Context context;
@@ -52,5 +52,26 @@ public class DbHelper extends SQLiteOpenHelper {
         else{
             Toast.makeText(context, "Favourite saved", Toast.LENGTH_SHORT).show();
         }
+        db.close();
     }
+    public boolean isFavoriteButton(int buttonId) {
+        SQLiteDatabase db = getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + RECIPE_ID + " = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(buttonId)});
+        boolean isFavorite = cursor.getCount() > 0;
+        cursor.close();
+        return isFavorite;
+    }
+
+    public void removeFavourite(int id) {
+
+            SQLiteDatabase db = this.getWritableDatabase();
+            boolean result = db.delete(DatabaseContract.Favourites.TABLE_NAME,
+                    DatabaseContract.Favourites.COLUMN_NAME_ID + " = ?",
+                    new String[] { String.valueOf(id) }) > 0;
+        Toast.makeText(context, "Favourite removed", Toast.LENGTH_SHORT).show();
+
+        db.close();
+    }
+
 }
