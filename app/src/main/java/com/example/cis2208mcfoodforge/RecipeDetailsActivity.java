@@ -1,10 +1,15 @@
 package com.example.cis2208mcfoodforge;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
@@ -37,6 +42,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
     private List<Recipe> recipes;
     private List<RecipeIngredients> recipeIngredients;
 
+    private Button addButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +51,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         ingredients = Arrays.asList(JsonReader.convertJsonToIngredient(this));
         recipes = Arrays.asList(JsonReader.convertJsonToRecipe(this));
         recipeIngredients = Arrays.asList(JsonReader.convertJsonToRecipeIngredients(this));
+        addButton = findViewById(R.id.add_to_favourites_button);
 
 
         imageHashMap = new HashMap<>();
@@ -102,6 +109,16 @@ public class RecipeDetailsActivity extends AppCompatActivity {
                         .transforms(new CenterCrop(), new RoundedCorners(40))
                         .override(600))
                 .into(imageView);
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DbHelper dbHelper = new DbHelper(RecipeDetailsActivity.this);
+
+                dbHelper.addFavourite(foodImageId);
+
+            }
+        });
     }
 
     public void MapImages(HashMap<Integer, String> hashmap){
