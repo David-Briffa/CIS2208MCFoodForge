@@ -940,5 +940,11 @@
         "measurement_qty_id": 6,
         "measurement_unit_id": 4,
         "recipe_id": 30
+    },
+    {
+        "ingredient_id": 62,
+        "measurement_qty_id": 10,
+        "measurement_unit_id": 1,
+        "recipe_id": 31
     }
 ]

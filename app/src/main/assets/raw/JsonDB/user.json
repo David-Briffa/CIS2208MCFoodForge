@@ -33,5 +33,10 @@
         "user_id": 7,
         "user_name": "Jessica",
         "user_surname": "Vella"
+    },
+    {
+        "user_id": 8,
+        "user_name": "Wayne",
+        "user_surname": "Borg"
     }
 ]

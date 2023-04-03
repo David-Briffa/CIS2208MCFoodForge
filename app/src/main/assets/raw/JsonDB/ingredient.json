@@ -242,5 +242,9 @@
     {
         "ingredient_id": 61,
         "ingredient_name": "Farfalle"
+    },
+    {
+        "ingredient_id": 62,
+        "ingredient_name": "Chicken Nuggets"
     }
 ]

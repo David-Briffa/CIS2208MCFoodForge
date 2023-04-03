@@ -1,14 +1,12 @@
 package com.example.cis2208mcfoodforge;
 
-import android.content.ContentValues;
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,99 +16,98 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.cis2208mcfoodforge.Database.Ingredient;
 import com.example.cis2208mcfoodforge.Database.JsonReader;
-import com.example.cis2208mcfoodforge.Database.Recipe;
 import com.example.cis2208mcfoodforge.Database.RecipeIngredients;
+import com.example.cis2208mcfoodforge.Database.User;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-
 public class RecipeDetailsActivity extends AppCompatActivity {
-
-    private ImageView imageView;
-    private TextView recipeNameView;
-    private TextView recipeDescriptionView;
-    private TextView recipeDifficultyView;
-    private TextView favouriteCountView;
-    private TextView ingredientView;
-
-
-    private HashMap<Integer, String> imageHashMap;
-    private List<Ingredient> ingredients;
-    private List<Recipe> recipes;
-    private List<RecipeIngredients> recipeIngredients;
 
     private Button addButton;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_details);
-        ingredients = Arrays.asList(JsonReader.convertJsonToIngredient(this));
-        recipes = Arrays.asList(JsonReader.convertJsonToRecipe(this));
-        recipeIngredients = Arrays.asList(JsonReader.convertJsonToRecipeIngredients(this));
-        addButton = findViewById(R.id.add_to_favourites_button);
+        List<Ingredient> ingredients = Arrays.asList(JsonReader.convertJsonToIngredient(this));
+        List<RecipeIngredients> recipeIngredients = Arrays.asList(JsonReader.convertJsonToRecipeIngredients(this));
+        List<User> users = Arrays.asList(JsonReader.convertJsonToUser(this));
+        addButton = findViewById(R.id.favButton);
 
-
-        imageHashMap = new HashMap<>();
+        //loading images using the method at the bottom
+        HashMap<Integer, String> imageHashMap = new HashMap<>();
         MapImages(imageHashMap);
-        //assigning the views
+
         Intent intent = getIntent();
-        //getting food details from extras
+
+        //getting recipe details from extras
         String foodName = intent.getStringExtra("recipeName");
         String foodDescription = intent.getStringExtra("description");
         int favouriteCount = intent.getIntExtra("favouriteCount", 0); // default value 0
         int foodImageId = intent.getIntExtra("id", 0);
         int difficulty = intent.getIntExtra("difficulty",0);
+        int authorId = intent.getIntExtra("author", 0);
+
+
         List<Integer> ingredientsUsed = new ArrayList<>();
         String imageFilename = imageHashMap.get(foodImageId);
+        RequestOptions requestOptions = new RequestOptions();
 
             for(RecipeIngredients recIngredient : recipeIngredients) {
                 int commonIng = recIngredient.getRecipe_id();
                 if (commonIng == foodImageId) {
                     ingredientsUsed.add(recIngredient.getIngredient_id());
-                    System.out.println(ingredientsUsed.size());
                 }
             }
+
+        String author = "";
+            for(User user : users) {
+                int userId = user.getUser_id();
+                if (userId == authorId) {
+                    author = user.getUser_name() + " " + user.getUser_surname();
+            }
+        }
+
+        //checks if a recipe is favourited and adjusts icon accordingly
         DbHelper dbHelper = new DbHelper(RecipeDetailsActivity.this);
         boolean isFavorite = dbHelper.isFavoriteButton(foodImageId);
 
-        if(isFavorite){
-            addButton.setBackgroundResource(R.drawable.ic_heart_selected_foreground);
-        }
-        else{
-            addButton.setBackgroundResource(R.drawable.ic_heart_unselected_foreground);
-        }
+        if(isFavorite) { addButton.setBackgroundResource(R.drawable.ic_heart_selected_foreground); }
+        else{ addButton.setBackgroundResource(R.drawable.ic_heart_unselected_foreground); }
 
-        imageView = findViewById(R.id.recipeImageView);
-        recipeNameView = findViewById(R.id.recipeNameTextView);
-        recipeDescriptionView = findViewById(R.id.recipeDescriptionTextView);
-        recipeDifficultyView = findViewById(R.id.recipeDifficultyTextView);
-        favouriteCountView = findViewById(R.id.favouriteCountTextView);
-        ingredientView = findViewById(R.id.ingredientsTextView);
+        //binding views
+        ImageView imageView = findViewById(R.id.recipeImageView);
+        TextView recipeNameView = findViewById(R.id.recipeNameTextView);
+        TextView authorNameView = findViewById(R.id.authorTextView);
+        TextView recipeDescriptionView = findViewById(R.id.recipeDescriptionTextView);
+        TextView recipeDifficultyView = findViewById(R.id.recipeDifficultyTextView);
+        TextView favouriteCountView = findViewById(R.id.favouriteCountTextView);
+        TextView ingredientView = findViewById(R.id.ingredientsTextView);
 
-
+        //assigning content to views
         recipeNameView.setText(foodName);
         recipeDescriptionView.setText(foodDescription);
         recipeDifficultyView.setText("Difficulty: " + difficulty);
         favouriteCountView.setText("Favourited by: " + favouriteCount + " users");
+        authorNameView.setText("Provided by: " + author);
         StringBuilder ingredientsForView = new StringBuilder();
 
+        //pseudo SQL union for JSON data
         for(int id : ingredientsUsed){
-            for(int i=0; i<ingredients.size(); i++){
+            for(int i = 0; i< ingredients.size(); i++){
                 if(ingredients.get(i).getIngredient_id() == id){
                     ingredientsForView.append(ingredients.get(i).getIngredient_name());
                     ingredientsForView.append("\n");
                     ingredientView.setText(ingredientsForView);
-
                 }
             }
         }
-        RequestOptions requestOptions = new RequestOptions();
 
-        // Load the image using Glide or any other image loading library
+        //image binding using glide and some appearance modification
         Glide.with(this)
                 .load("file:///android_asset/" + imageFilename)
                 .apply(requestOptions
@@ -118,6 +115,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
                         .override(600))
                 .into(imageView);
 
+        //favourite button
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -135,8 +133,6 @@ public class RecipeDetailsActivity extends AppCompatActivity {
             }
         });
     }
-
-
 
     public void MapImages(HashMap<Integer, String> hashmap){
         hashmap.put(1, "raw/Images/BeefLasagna.jpg");
@@ -169,6 +165,6 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         hashmap.put(28, "raw/Images/MashedPotatoes.webp");
         hashmap.put(29, "raw/Images/MushroomSauce.jpg");
         hashmap.put(30, "raw/Images/PizzaDough.webp");
+        hashmap.put(31, "raw/Images/chickenNuggets.jpg");
     }
-
 }

@@ -69,7 +69,9 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.Recipe
             hashmap.put(28, "raw/Images/MashedPotatoes.webp");
             hashmap.put(29, "raw/Images/MushroomSauce.jpg");
             hashmap.put(30, "raw/Images/PizzaDough.webp");
-    }
+            hashmap.put(31, "raw/Images/chickenNuggets.jpg");
+
+        }
 
         @NonNull
         @Override
@@ -105,6 +107,7 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.Recipe
                     intent.putExtra("favouriteCount", selectedRecipe.getFavourite_count());
                     intent.putExtra("id", selectedRecipe.getRecipe_id());
                     intent.putExtra("difficulty", selectedRecipe.getDifficulty());
+                    intent.putExtra("author", selectedRecipe.getUser_id());
 
                     // Launch the new activity
                     context.startActivity(intent);

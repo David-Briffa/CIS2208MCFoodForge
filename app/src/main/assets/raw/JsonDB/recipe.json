@@ -238,5 +238,13 @@
         "recipe_id": 30,
         "recipe_name": "Pizza Dough",
         "user_id": 5
+    },
+    {
+        "difficulty": 1,
+        "favourite_count": 420,
+        "recipe_description": "Nuggs of the chimke",
+        "recipe_id": 31,
+        "recipe_name": "Chimkin Nuggs",
+        "user_id": 8
     }
 ]
