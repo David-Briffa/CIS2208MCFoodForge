@@ -37,7 +37,7 @@ public class FavouritesAdapter extends CursorAdapter {
 
         for(Recipe recipe : recipes){
             if(recipe.getRecipe_id() == id){
-                valueTextView.setText( recipe.getRecipe_name());
+                valueTextView.setText(recipe.getRecipe_name());
             }
         }
     }

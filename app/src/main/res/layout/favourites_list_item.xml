@@ -1,17 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="16dp"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_margin="8dp"
-    >
+    android:gravity="center_vertical">
     <TextView
         android:id="@+id/savedFavouritesTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:fontFamily="@font/libre_baskerville_regular"
+        android:layout_weight="1"
+        android:textAlignment="center"
+        android:textSize="25sp"
         android:maxWidth="200dp"
-        android:ellipsize="end" />
+        android:ellipsize="end"/>
+
+    <Button
+        android:id="@+id/favButton"
+        android:layout_width="66dp"
+        android:layout_height="63dp"
+        android:layout_gravity="end"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/ic_heart_selected_foreground"/>
+        />
 
 </LinearLayout>
