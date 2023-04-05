@@ -15,7 +15,9 @@
         android:textAlignment="center"
         android:textSize="25sp"
         android:maxWidth="200dp"
-        android:ellipsize="end"/>
+        android:ellipsize="end"
+        android:onClick="passIntent"/>
+    />
 
     <Button
         android:id="@+id/favButton"
