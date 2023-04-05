@@ -1,35 +1,35 @@
 package com.example.cis2208mcfoodforge.ui.favourites;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
-import com.example.cis2208mcfoodforge.databinding.FragmentFavouritesBinding;
+import com.example.cis2208mcfoodforge.DbHelper;
+import com.example.cis2208mcfoodforge.R;
 
 public class FavouritesFragment extends Fragment {
-
-    private FragmentFavouritesBinding binding;
-
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        FavouritesViewModel favouritesViewModel =
-                new ViewModelProvider(this).get(FavouritesViewModel.class);
-
-        binding = FragmentFavouritesBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
-
-        return root;
-    }
+    private ListView listView;
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_favourites, container, false);
+        listView = view.findViewById(R.id.favouritesListView);
+        return view;
+    }
+
+    //Queries the user's favourites database and binds them to the view
+    @Override
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        DbHelper dbHelper = new DbHelper(getContext());
+        Cursor cursor = dbHelper.getFavourites();
+        FavouritesAdapter adapter = new FavouritesAdapter(getContext(), cursor);
+        listView.setAdapter(adapter);
     }
 }

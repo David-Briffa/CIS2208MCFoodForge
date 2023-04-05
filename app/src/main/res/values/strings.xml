@@ -12,4 +12,5 @@
     <string name="easiestRecipesDescriptionView">It doesn\'t take a chef to make good food</string>
     <string name="subtitleView">The best recipes are only a tap away</string>
     <string name="ingredients">Ingredients</string>
+    <string name="your_favourites">Your Favourites</string>
 </resources>

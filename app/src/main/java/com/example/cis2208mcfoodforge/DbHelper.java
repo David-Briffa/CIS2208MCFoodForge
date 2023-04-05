@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 import com.example.cis2208mcfoodforge.databases.DatabaseContract;
 
 public class DbHelper extends SQLiteOpenHelper {
-    private Context context;
+    private final Context context;
     private static final String DATABASE_NAME = "favouritesDB.db";
     private static final int DATABASE_VERSION = 1;
 
@@ -39,7 +39,8 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(query);
     }
 
-    void addFavourite(int id){
+    //methods for adding or deleting recipes to the user's personal favourite list, used by the heart buttons
+    public void addFavourite(int id){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(RECIPE_ID, id);
@@ -54,24 +55,33 @@ public class DbHelper extends SQLiteOpenHelper {
         }
         db.close();
     }
-    public boolean isFavoriteButton(int buttonId) {
-        SQLiteDatabase db = getReadableDatabase();
-        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + RECIPE_ID + " = ?";
-        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(buttonId)});
-        boolean isFavorite = cursor.getCount() > 0;
-        cursor.close();
-        return isFavorite;
-    }
-
     public void removeFavourite(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
 
-            SQLiteDatabase db = this.getWritableDatabase();
-            boolean result = db.delete(DatabaseContract.Favourites.TABLE_NAME,
-                    DatabaseContract.Favourites.COLUMN_NAME_ID + " = ?",
-                    new String[] { String.valueOf(id) }) > 0;
+        boolean result = db.delete(DatabaseContract.Favourites.TABLE_NAME,
+                DatabaseContract.Favourites.COLUMN_NAME_ID + " = ?",
+                new String[] { String.valueOf(id) }) > 0;
         Toast.makeText(context, "Favourite removed", Toast.LENGTH_SHORT).show();
 
         db.close();
     }
 
+    //checks whether a recipe is favourited for button icon changing purposes
+    public boolean isFavoriteButton(int buttonId) {
+        SQLiteDatabase db = getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + RECIPE_ID + " = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(buttonId)});
+
+        boolean isFavorite = cursor.getCount() > 0;
+        cursor.close();
+        return isFavorite;
+    }
+
+
+    public Cursor getFavourites() {
+        SQLiteDatabase db = getReadableDatabase();
+        String query = "SELECT recipe_id as _id FROM " + TABLE_NAME;
+
+        return db.rawQuery(query, null);
+    }
 }

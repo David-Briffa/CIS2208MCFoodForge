@@ -25,8 +25,8 @@ import java.util.List;
 
 public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.RecipeViewHolder> {
     private final List<Recipe> recipes;
-    private HashMap<Integer, String> imageHashMap;
-    private Context context;
+    private final HashMap<Integer, String> imageHashMap;
+    private final Context context;
 
     public DiscoverAdapter(List<Recipe> recipes, Context context) {
             this.recipes = recipes;
@@ -37,6 +37,72 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.Recipe
         MapImages(imageHashMap);
         }
 
+    @NonNull
+    @Override //binding layout for individual items within the recycler view
+    public RecipeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.recipe_list_item, parent, false);
+        return new RecipeViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull RecipeViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        Recipe recipe = recipes.get(position);
+        String imageFilename = imageHashMap.get(recipe.getRecipe_id());
+        RequestOptions requestOptions = new RequestOptions();
+
+        holder.bind(recipe.getRecipe_name());
+
+        //image binding and modification, uses a deprecated method
+        Glide.with(context)
+                .load("file:///android_asset/" + imageFilename)
+                .apply(requestOptions
+                        .transforms(new CenterCrop(), new RoundedCorners(40))
+                        .override(600))
+                .into(holder.recipeImageView);
+        holder.recipeImageView.setOnClickListener(new View.OnClickListener() {
+
+        //clicking on a recycler view image on this fragment opens the recipe Details activity
+        //also sends the details related to the selected recipe as an intent
+        @Override
+        public void onClick(View view) {
+            Recipe selectedRecipe = recipes.get(position);
+            Intent intent = new Intent(context, RecipeDetailsActivity.class);
+
+            intent.putExtra("recipeName", selectedRecipe.getRecipe_name());
+            intent.putExtra("description", selectedRecipe.getRecipe_description());
+            intent.putExtra("favouriteCount", selectedRecipe.getFavourite_count());
+            intent.putExtra("id", selectedRecipe.getRecipe_id());
+            intent.putExtra("difficulty", selectedRecipe.getDifficulty());
+            intent.putExtra("author", selectedRecipe.getUser_id());
+
+            context.startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return recipes.size();
+    }
+
+    public static class RecipeViewHolder extends RecyclerView.ViewHolder {
+        public TextView recipeNameTextView;
+        public ImageView recipeImageView;
+
+        //binding the name and image to the views found in recipe_list_item
+        public RecipeViewHolder(@NonNull View itemView) {
+            super(itemView);
+            recipeNameTextView = itemView.findViewById(R.id.recipeNameTextView);
+            recipeImageView = itemView.findViewById(R.id.recipeImageView);
+        }
+
+        public void bind(String recipeName) {
+            recipeNameTextView.setText(recipeName);
+        }
+    }
+
+    //There has to be a better way to do this, but it works
     public void MapImages(HashMap<Integer, String> hashmap){
         hashmap.put(1, "raw/Images/BeefLasagna.jpg");
         hashmap.put(2, "raw/Images/ChickenPasta.jpg");
@@ -70,69 +136,6 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.Recipe
         hashmap.put(30, "raw/Images/PizzaDough.webp");
         hashmap.put(31, "raw/Images/chickenNuggets.jpg");
     }
-
-    @NonNull
-    @Override
-    public RecipeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.recipe_list_item, parent, false);
-        return new RecipeViewHolder(view);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull RecipeViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        Recipe recipe = recipes.get(position);
-        String imageFilename = imageHashMap.get(recipe.getRecipe_id());
-        RequestOptions requestOptions = new RequestOptions();
-
-        holder.bind(recipe.getRecipe_name());
-
-        Glide.with(context)
-                .load("file:///android_asset/" + imageFilename)
-                .apply(requestOptions
-                        .transforms(new CenterCrop(), new RoundedCorners(40))
-                        .override(600))
-                .into(holder.recipeImageView);
-        holder.recipeImageView.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Recipe selectedRecipe = recipes.get(position);
-                Intent intent = new Intent(context, RecipeDetailsActivity.class);
-
-                intent.putExtra("recipeName", selectedRecipe.getRecipe_name());
-                intent.putExtra("description", selectedRecipe.getRecipe_description());
-                intent.putExtra("favouriteCount", selectedRecipe.getFavourite_count());
-                intent.putExtra("id", selectedRecipe.getRecipe_id());
-                intent.putExtra("difficulty", selectedRecipe.getDifficulty());
-                intent.putExtra("author", selectedRecipe.getUser_id());
-
-                // Launch the new activity
-                context.startActivity(intent);
-            }
-        });
-    }
-
-    @Override
-    public int getItemCount() {
-        return recipes.size();
-    }
-
-    public static class RecipeViewHolder extends RecyclerView.ViewHolder {
-        public TextView recipeNameTextView;
-        public ImageView recipeImageView;
-
-        public RecipeViewHolder(@NonNull View itemView) {
-            super(itemView);
-            recipeNameTextView = itemView.findViewById(R.id.recipeNameTextView);
-            recipeImageView = itemView.findViewById(R.id.recipeImageView);
-        }
-
-        public void bind(String recipeName) {
-            recipeNameTextView.setText(recipeName);
-        }
-
-        }
-    }
+}
 
 
