@@ -37,6 +37,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         List<RecipeIngredients> recipeIngredients = Arrays.asList(JsonReader.convertJsonToRecipeIngredients(this));
         List<User> users = Arrays.asList(JsonReader.convertJsonToUser(this));
         addButton = findViewById(R.id.favButton);
+        String author = "";
 
         //loading images using the method at the bottom
         HashMap<Integer, String> imageHashMap = new HashMap<>();
@@ -52,7 +53,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         int difficulty = intent.getIntExtra("difficulty",0);
         int authorId = intent.getIntExtra("author", 0);
 
-
+        //pseudo SQL union for JSON data
         List<Integer> ingredientsUsed = new ArrayList<>();
         String imageFilename = imageHashMap.get(foodImageId);
         RequestOptions requestOptions = new RequestOptions();
@@ -64,14 +65,8 @@ public class RecipeDetailsActivity extends AppCompatActivity {
                 }
             }
 
-        String author = "";
-        int userId = 0;
-        for(User user : users) {
-               userId = user.getUser_id();
-                if (userId == authorId) {
-                    author = user.getUser_name() + " " + user.getUser_surname();
-            }
-        }
+        //pseudo SQL union for JSON data
+        author = findAuthor(users, authorId);
 
         //checks if a recipe is favourited and adjusts icon accordingly
         DbHelper dbHelper = new DbHelper(RecipeDetailsActivity.this);
@@ -135,6 +130,17 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         });
     }
 
+    public String findAuthor(List<User> users,int authorId){
+        String author = "";
+        int userId = 0;
+        for(User user : users) {
+            userId = user.getUser_id();
+            if (userId == authorId) {
+                author = user.getUser_name() + " " + user.getUser_surname();
+                return author;
+            }
+        } return "";
+    }
     public void MapImages(HashMap<Integer, String> hashmap){
         hashmap.put(1, "raw/Images/BeefLasagna.jpg");
         hashmap.put(2, "raw/Images/ChickenPasta.jpg");
