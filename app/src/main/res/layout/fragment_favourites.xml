@@ -6,16 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".ui.favourites.FavouritesFragment">
 
+
     <TextView
         android:id="@+id/favouriteTabTitleView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_width="281dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="16dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/libre_baskerville_bold"
         android:text="@string/your_favourites"
-        android:textAlignment="center"
-        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

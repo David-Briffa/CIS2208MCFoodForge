@@ -5,6 +5,7 @@ import android.content.Context;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 public class JsonReader {
     public static Ingredient[] convertJsonToIngredient(Context context) {
@@ -16,7 +17,7 @@ public class JsonReader {
             byte[] buffer = new byte[size];
             inputStream.read(buffer);
             inputStream.close();
-            jsonString = new String(buffer, "UTF-8");
+            jsonString = new String(buffer, StandardCharsets.UTF_8);
         } catch (IOException e) { e.printStackTrace(); }
 
         Gson gson = new Gson();
@@ -31,7 +32,7 @@ public class JsonReader {
             byte[] buffer = new byte[size];
             inputStream.read(buffer);
             inputStream.close();
-            jsonString = new String(buffer, "UTF-8");
+            jsonString = new String(buffer, StandardCharsets.UTF_8);
         } catch (IOException e) { e.printStackTrace(); }
 
         Gson gson = new Gson();
@@ -47,7 +48,7 @@ public class JsonReader {
             byte[] buffer = new byte[size];
             inputStream.read(buffer);
             inputStream.close();
-            jsonString = new String(buffer, "UTF-8");
+            jsonString = new String(buffer, StandardCharsets.UTF_8);
         } catch (IOException e) { e.printStackTrace(); }
 
         Gson gson = new Gson();
@@ -62,7 +63,7 @@ public class JsonReader {
             byte[] buffer = new byte[size];
             inputStream.read(buffer);
             inputStream.close();
-            jsonString = new String(buffer, "UTF-8");
+            jsonString = new String(buffer, StandardCharsets.UTF_8);
         } catch (IOException e) { e.printStackTrace(); }
 
         Gson gson = new Gson();
@@ -78,7 +79,7 @@ public class JsonReader {
             byte[] buffer = new byte[size];
             inputStream.read(buffer);
             inputStream.close();
-            jsonString = new String(buffer, "UTF-8");
+            jsonString = new String(buffer, StandardCharsets.UTF_8);
         } catch (IOException e) { e.printStackTrace(); }
 
         Gson gson = new Gson();
@@ -94,7 +95,7 @@ public class JsonReader {
             byte[] buffer = new byte[size];
             inputStream.read(buffer);
             inputStream.close();
-            jsonString = new String(buffer, "UTF-8");
+            jsonString = new String(buffer, StandardCharsets.UTF_8);
         } catch (IOException e) { e.printStackTrace(); }
 
         Gson gson = new Gson();
@@ -110,7 +111,7 @@ public class JsonReader {
             byte[] buffer = new byte[size];
             inputStream.read(buffer);
             inputStream.close();
-            jsonString = new String(buffer, "UTF-8");
+            jsonString = new String(buffer, StandardCharsets.UTF_8);
         } catch (IOException e) { e.printStackTrace(); }
 
         Gson gson = new Gson();
