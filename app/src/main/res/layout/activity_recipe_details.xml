@@ -39,7 +39,8 @@
         app:layout_constraintEnd_toEndOf="@+id/recipeNameTextView"
         app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="@+id/recipeNameTextView"
-        app:layout_constraintTop_toBottomOf="@+id/recipeNameTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/recipeNameTextView"
+        />
 
     <ImageView
         android:id="@+id/recipeImageView"

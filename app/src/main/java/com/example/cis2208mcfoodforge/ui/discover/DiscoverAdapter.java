@@ -35,7 +35,6 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.Recipe
         //placing images into a hashmap, the key is the recipe ID, the value is the image path
         imageHashMap = new HashMap<>();
         MapImages(imageHashMap);
-
         }
 
     public void MapImages(HashMap<Integer, String> hashmap){
@@ -70,7 +69,6 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.Recipe
         hashmap.put(29, "raw/Images/MushroomSauce.jpg");
         hashmap.put(30, "raw/Images/PizzaDough.webp");
         hashmap.put(31, "raw/Images/chickenNuggets.jpg");
-
     }
 
     @NonNull
