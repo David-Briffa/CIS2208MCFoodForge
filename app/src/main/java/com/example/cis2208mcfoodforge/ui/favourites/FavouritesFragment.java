@@ -31,5 +31,6 @@ public class FavouritesFragment extends Fragment {
         Cursor cursor = dbHelper.getFavourites();
         FavouritesAdapter adapter = new FavouritesAdapter(getContext(), cursor);
         listView.setAdapter(adapter);
+
     }
 }

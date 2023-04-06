@@ -6,11 +6,13 @@ import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
 
 import com.example.cis2208mcfoodforge.Database.JsonReader;
 import com.example.cis2208mcfoodforge.Database.Recipe;
+import com.example.cis2208mcfoodforge.DbHelper;
 import com.example.cis2208mcfoodforge.R;
 import com.example.cis2208mcfoodforge.RecipeDetailsActivity;
 
@@ -19,17 +21,16 @@ import java.util.List;
 
 public class FavouritesAdapter extends CursorAdapter {
     private final List<Recipe> recipes;
-    private final Context context;
 
     public FavouritesAdapter(Context context, Cursor cursor) {
         super(context, cursor, 0);
         recipes = Arrays.asList(JsonReader.convertJsonToRecipe(context));
-        this.context = context;
 
     }
 
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
+
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.favourites_list_item, parent, false);
         TextView valueTextView = view.findViewById(R.id.savedFavouritesTextView);
@@ -49,12 +50,15 @@ public class FavouritesAdapter extends CursorAdapter {
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
         TextView valueTextView = view.findViewById(R.id.savedFavouritesTextView);
+        Button favButton = view.findViewById(R.id.favButton);
+
         int position = (int) valueTextView.getTag();
 
         Recipe selectedRecipe = recipes.get(position);
 
         valueTextView.setText(selectedRecipe.getRecipe_name());
 
+        //tapping on the favourited item redirects you to its details activity
         valueTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,7 +76,19 @@ public class FavouritesAdapter extends CursorAdapter {
                 context.startActivity(intent);
             }
         });
-    }}
+
+        favButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DbHelper dbHelper = new DbHelper(context);
+                dbHelper.removeFavourite(selectedRecipe.getRecipe_id());
+                Cursor newCursor = dbHelper.getFavourites();
+                swapCursor(newCursor);
+            }
+        });
+    }
+}
+
 
 
 
