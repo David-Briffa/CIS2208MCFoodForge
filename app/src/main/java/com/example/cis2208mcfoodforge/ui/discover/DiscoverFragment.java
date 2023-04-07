@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,8 +13,10 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cis2208mcfoodforge.Database.Ingredient;
 import com.example.cis2208mcfoodforge.Database.JsonReader;
 import com.example.cis2208mcfoodforge.Database.Recipe;
+import com.example.cis2208mcfoodforge.Database.RecipeIngredients;
 import com.example.cis2208mcfoodforge.R;
 
 import java.util.ArrayList;
@@ -42,6 +45,7 @@ public class DiscoverFragment extends Fragment {
         //reading Json database and storing it as a List
         List<Recipe> recipes = Arrays.asList(JsonReader.convertJsonToRecipe(requireContext()));
 
+
         //10 random recipes for the daily dishes recycler view
         Collections.shuffle(recipes);
         List<Recipe> shuffledTemp = new ArrayList<>(recipes);
@@ -63,6 +67,22 @@ public class DiscoverFragment extends Fragment {
         mostFavouritedRecycler.setAdapter(mostFavouritedAdapter);
         easiestRecipesRecycler.setAdapter(easiestRecipesAdapter);
 
+        SearchView searchView = view.findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                int recipeId = filter(query);
+                System.out.println(recipeId + "Whole");
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                int recipeId = filter(newText);
+                System.out.println(recipeId + "bit");
+                return false;
+            }
+        });
         return view;
     }
 
@@ -72,5 +92,23 @@ public class DiscoverFragment extends Fragment {
                 easiestRecipes.add(recipe);
             }
         }
+    }
+    private int filter(String query) {
+        List<RecipeIngredients> recipeIngredients = Arrays.asList(JsonReader.convertJsonToRecipeIngredients(requireContext()));
+        List<Ingredient> ingredients = Arrays.asList(JsonReader.convertJsonToIngredient(requireContext()));
+        int match;
+        int recipeId;
+            for (int i=0; i<ingredients.size(); i++) {
+                if (ingredients.get(i).getIngredient_name().toLowerCase().contains(query.toLowerCase())) {
+                    match = ingredients.get(i).getIngredient_id();
+                    for (RecipeIngredients recipeIngredient : recipeIngredients) {
+                        if(recipeIngredient.getIngredient_id() == match){
+                            recipeId = recipeIngredient.getRecipe_id();
+                            return recipeId;
+                        }
+                }
+                }
+        }
+        return 0;
     }
 }
