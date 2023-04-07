@@ -1,15 +1,14 @@
 package com.example.cis2208mcfoodforge.ui.discover;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,13 +17,13 @@ import com.example.cis2208mcfoodforge.Database.JsonReader;
 import com.example.cis2208mcfoodforge.Database.Recipe;
 import com.example.cis2208mcfoodforge.Database.RecipeIngredients;
 import com.example.cis2208mcfoodforge.R;
+import com.example.cis2208mcfoodforge.SearchedListActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
 
 public class DiscoverFragment extends Fragment {
 
@@ -71,15 +70,18 @@ public class DiscoverFragment extends Fragment {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                int recipeId = filter(query);
-                System.out.println(recipeId + "Whole");
+                List<Integer> recipeIds = filter(query);
+                Intent intent = new Intent(getContext(), SearchedListActivity.class);
+
+                intent.putExtra("recipeIds", new ArrayList<>(recipeIds));
+                startActivity(intent);
+
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                int recipeId = filter(newText);
-                System.out.println(recipeId + "bit");
+                //do nothing
                 return false;
             }
         });
@@ -93,22 +95,20 @@ public class DiscoverFragment extends Fragment {
             }
         }
     }
-    private int filter(String query) {
+    private List<Integer> filter(String query) {
         List<RecipeIngredients> recipeIngredients = Arrays.asList(JsonReader.convertJsonToRecipeIngredients(requireContext()));
         List<Ingredient> ingredients = Arrays.asList(JsonReader.convertJsonToIngredient(requireContext()));
         int match;
-        int recipeId;
+        List<Integer> recipeIds = new ArrayList<>();
             for (int i=0; i<ingredients.size(); i++) {
                 if (ingredients.get(i).getIngredient_name().toLowerCase().contains(query.toLowerCase())) {
                     match = ingredients.get(i).getIngredient_id();
                     for (RecipeIngredients recipeIngredient : recipeIngredients) {
                         if(recipeIngredient.getIngredient_id() == match){
-                            recipeId = recipeIngredient.getRecipe_id();
-                            return recipeId;
-                        }
+                            recipeIds.add(recipeIngredient.getRecipe_id());                        }
+                     }
                 }
-                }
-        }
-        return 0;
+            }
+        return recipeIds;
     }
 }

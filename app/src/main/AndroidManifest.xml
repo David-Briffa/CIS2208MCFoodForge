@@ -32,6 +32,12 @@
             android:label="FoodForge"
             android:screenOrientation="sensor"/>
 
+        <activity
+            android:name=".SearchedListActivity"
+            android:label="FoodForge"
+            android:screenOrientation="sensor"/>
+
+
     </application>
 
 </manifest>
