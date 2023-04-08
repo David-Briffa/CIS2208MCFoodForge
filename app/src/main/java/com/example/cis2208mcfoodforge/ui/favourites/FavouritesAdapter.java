@@ -25,7 +25,6 @@ public class FavouritesAdapter extends CursorAdapter {
     public FavouritesAdapter(Context context, Cursor cursor) {
         super(context, cursor, 0);
         recipes = Arrays.asList(JsonReader.convertJsonToRecipe(context));
-
     }
 
     @Override
@@ -40,7 +39,7 @@ public class FavouritesAdapter extends CursorAdapter {
             Recipe recipe = recipes.get(i);
             if (recipe.getRecipe_id() == id) {
                 valueTextView.setText(recipe.getRecipe_name());
-                valueTextView.setTag(i); // Set the position of the recipe as the tag
+                valueTextView.setTag(i);
                 break;
             }
         }
@@ -51,21 +50,19 @@ public class FavouritesAdapter extends CursorAdapter {
     public void bindView(View view, Context context, Cursor cursor) {
         TextView valueTextView = view.findViewById(R.id.savedFavouritesTextView);
         Button favButton = view.findViewById(R.id.favButton);
-
         int position = (int) valueTextView.getTag();
-
         Recipe selectedRecipe = recipes.get(position);
 
         valueTextView.setText(selectedRecipe.getRecipe_name());
 
-        //tapping on the favourited item redirects you to its details activity
+        //tapping on the favourite item redirects you to its details activity
         valueTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an Intent to start the new activity
                 Intent intent = new Intent(context, RecipeDetailsActivity.class);
 
-                // Add any data to the Intent, if needed
+                //passing individual attributes instead of whole recipe
+                //unsure if good practice
                 intent.putExtra("recipeName", selectedRecipe.getRecipe_name());
                 intent.putExtra("description", selectedRecipe.getRecipe_description());
                 intent.putExtra("favouriteCount", selectedRecipe.getFavourite_count());
@@ -77,6 +74,7 @@ public class FavouritesAdapter extends CursorAdapter {
             }
         });
 
+        //The heart icon in the favourites interface removes an item from the database and refreshes the view
         favButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

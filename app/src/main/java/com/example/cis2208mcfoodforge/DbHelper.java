@@ -14,9 +14,10 @@ import com.example.cis2208mcfoodforge.databases.DatabaseContract;
 //database helper class for use with the favourites database component of the application
 public class DbHelper extends SQLiteOpenHelper {
     private final Context context;
+
+    //database details
     private static final String DATABASE_NAME = "favouritesDB.db";
     private static final int DATABASE_VERSION = 1;
-
     private static final String TABLE_NAME = "favourites";
     private static final String RECIPE_ID = "recipe_id";
 
@@ -36,18 +37,19 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String query = "CREATE TABLE " + TABLE_NAME +
                 " (" + RECIPE_ID + " INTEGER PRIMARY KEY);";
-
         db.execSQL(query);
     }
 
     //methods for adding or deleting recipes to the user's personal favourite list, used by the heart buttons
     public void addFavourite(int id){
         SQLiteDatabase db = this.getWritableDatabase();
+        //content values represents a key-value pair
         ContentValues cv = new ContentValues();
         cv.put(RECIPE_ID, id);
 
         long result = db.insert(TABLE_NAME, null, cv);
 
+        //this is redundant as you can't favourite a recipe twice with the way the app works, but it is here just in case
         if(result == -1){
             Toast.makeText(context, "This recipe is already favourited", Toast.LENGTH_SHORT).show();
         }

@@ -41,7 +41,7 @@ public class DiscoverFragment extends Fragment {
         mostFavouritedRecycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         easiestRecipesRecycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
-        //reading Json database and storing it as a List
+        //reading Json recipe database and storing it as a List
         List<Recipe> recipes = Arrays.asList(JsonReader.convertJsonToRecipe(requireContext()));
 
         DiscoverAdapter dailyDishesAdapter = new DiscoverAdapter(loadDailyDishes(recipes), getContext());
@@ -52,6 +52,7 @@ public class DiscoverFragment extends Fragment {
         mostFavouritedRecycler.setAdapter(mostFavouritedAdapter);
         easiestRecipesRecycler.setAdapter(easiestRecipesAdapter);
 
+        //query is submitted upon pressing the magnifying glass in the keyboard
         SearchView searchView = view.findViewById(R.id.searchView);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -98,6 +99,7 @@ public class DiscoverFragment extends Fragment {
         return recipes.subList(0, Math.min(10, recipes.size()));
     }
 
+    //logic for search bar
     private List<Integer> filter(String query) {
         List<RecipeIngredients> recipeIngredients = Arrays.asList(JsonReader.convertJsonToRecipeIngredients(requireContext()));
         List<Ingredient> ingredients = Arrays.asList(JsonReader.convertJsonToIngredient(requireContext()));
