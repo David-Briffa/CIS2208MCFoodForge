@@ -36,7 +36,7 @@ public class DiscoverFragment extends Fragment {
         RecyclerView mostFavouritedRecycler = view.findViewById(R.id.mostFavouritedRecyclerView);
         RecyclerView easiestRecipesRecycler = view.findViewById(R.id.easiestRecipesRecyclerView);
 
-        //side scrolling action
+        //side scrolling action for recycler views
         dailyDishesRecycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         mostFavouritedRecycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         easiestRecipesRecycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
@@ -44,23 +44,9 @@ public class DiscoverFragment extends Fragment {
         //reading Json database and storing it as a List
         List<Recipe> recipes = Arrays.asList(JsonReader.convertJsonToRecipe(requireContext()));
 
-
-        //10 random recipes for the daily dishes recycler view
-        Collections.shuffle(recipes);
-        List<Recipe> shuffledTemp = new ArrayList<>(recipes);
-        List<Recipe> dailyRecipes = shuffledTemp.subList(0, 10);
-
-        //top 10 most favourited recipes
-        recipes.sort(Comparator.comparingInt(Recipe::getFavourite_count).reversed());
-        List<Recipe> mostFavourited = recipes.subList(0, Math.min(10, recipes.size()));
-
-        //all recipes with the easiest difficulty, difficulty level is stored as part of recipe's json
-        List<Recipe> easiestRecipes = new ArrayList<>();
-        loadEasiest(easiestRecipes,recipes);
-
-        DiscoverAdapter dailyDishesAdapter = new DiscoverAdapter(dailyRecipes, getContext());
-        DiscoverAdapter mostFavouritedAdapter = new DiscoverAdapter(mostFavourited, getContext());
-        DiscoverAdapter easiestRecipesAdapter = new DiscoverAdapter(easiestRecipes, getContext());
+        DiscoverAdapter dailyDishesAdapter = new DiscoverAdapter(loadDailyDishes(recipes), getContext());
+        DiscoverAdapter mostFavouritedAdapter = new DiscoverAdapter(loadMostFavourited(recipes), getContext());
+        DiscoverAdapter easiestRecipesAdapter = new DiscoverAdapter(loadEasiest(recipes), getContext());
 
         dailyDishesRecycler.setAdapter(dailyDishesAdapter);
         mostFavouritedRecycler.setAdapter(mostFavouritedAdapter);
@@ -88,13 +74,30 @@ public class DiscoverFragment extends Fragment {
         return view;
     }
 
-    public void loadEasiest(List<Recipe> easiestRecipes , List<Recipe> recipes ){
+    //all recipes with the easiest difficulty, difficulty level is stored as part of recipe's json
+    public List<Recipe> loadEasiest(List<Recipe> recipes ){
+        List<Recipe> easiestRecipes = new ArrayList<>();
         for(Recipe recipe : recipes){
             if(recipe.getDifficulty() == 1){
                 easiestRecipes.add(recipe);
             }
         }
+        return easiestRecipes;
     }
+
+    //10 random recipes for the daily dishes recycler view
+    public List<Recipe> loadDailyDishes(List<Recipe> recipes ){
+        Collections.shuffle(recipes);
+        List<Recipe> shuffledTemp = new ArrayList<>(recipes);
+        return shuffledTemp.subList(0, 10);
+    }
+
+    //top 10 most recipes with the highest favourite count, count is stored in json
+    public List<Recipe> loadMostFavourited(List<Recipe> recipes){
+        recipes.sort(Comparator.comparingInt(Recipe::getFavourite_count).reversed());
+        return recipes.subList(0, Math.min(10, recipes.size()));
+    }
+
     private List<Integer> filter(String query) {
         List<RecipeIngredients> recipeIngredients = Arrays.asList(JsonReader.convertJsonToRecipeIngredients(requireContext()));
         List<Ingredient> ingredients = Arrays.asList(JsonReader.convertJsonToIngredient(requireContext()));
