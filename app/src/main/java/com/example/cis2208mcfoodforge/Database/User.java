@@ -1,9 +1,9 @@
 package com.example.cis2208mcfoodforge.Database;
 
 public class User {
-    private int user_id;
-    private String user_name;
-    private String user_surname;
+    private final int user_id;
+    private final String user_name;
+    private final String user_surname;
 
     public int getUser_id() {
         return user_id;

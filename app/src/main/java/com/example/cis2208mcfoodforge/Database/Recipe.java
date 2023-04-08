@@ -1,12 +1,12 @@
 package com.example.cis2208mcfoodforge.Database;
 
 public class Recipe {
-    private String recipe_description;
-    private String recipe_name;
-    private int favourite_count;
-    private int user_id;
-    private int recipe_id;
-    private int difficulty;
+    private final String recipe_description;
+    private final String recipe_name;
+    private final int favourite_count;
+    private final int user_id;
+    private final int recipe_id;
+    private final int difficulty;
 
 
     public String getRecipe_description() {

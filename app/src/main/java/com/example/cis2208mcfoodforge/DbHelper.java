@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 
 import com.example.cis2208mcfoodforge.databases.DatabaseContract;
 
+//database helper class for use with the favourites part of the application
 public class DbHelper extends SQLiteOpenHelper {
     private final Context context;
     private static final String DATABASE_NAME = "favouritesDB.db";

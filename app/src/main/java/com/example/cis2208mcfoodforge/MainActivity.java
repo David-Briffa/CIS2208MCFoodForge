@@ -2,11 +2,6 @@ package com.example.cis2208mcfoodforge;
 
 import android.os.Bundle;
 
-import com.example.cis2208mcfoodforge.Database.Favourites;
-import com.example.cis2208mcfoodforge.Database.Ingredient;
-import com.example.cis2208mcfoodforge.Database.JsonReader;
-import com.example.cis2208mcfoodforge.Database.RecipeIngredients;
-import com.example.cis2208mcfoodforge.Database.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,13 +14,11 @@ import com.example.cis2208mcfoodforge.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        com.example.cis2208mcfoodforge.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         BottomNavigationView navView = findViewById(R.id.nav_view);
 

@@ -1,5 +1,6 @@
 package com.example.cis2208mcfoodforge;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -17,49 +18,48 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SearchListAdapter extends RecyclerView.Adapter<SearchListAdapter.SearchedListViewHolder> {
-    private List<Recipe> mRecipes;
-    private static List<Recipe> mAllRecipes;
-    private Context mContext;
+    private final List<Recipe> recipes;
+    private final Context context;
 
+    @SuppressLint("NotifyDataSetChanged")
     public SearchListAdapter(List<Recipe> recipes, Context context) {
-        mRecipes = recipes;
-        mAllRecipes = Arrays.asList(JsonReader.convertJsonToRecipe(context));
-        mContext = context;
+        this.recipes = recipes;
+        this.context = context;
         notifyDataSetChanged();
     }
     @NonNull
     @Override
     public SearchedListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(mContext).inflate(R.layout.searched_list_item, parent, false);
-        return new SearchedListViewHolder(itemView, mContext);
+        View itemView = LayoutInflater.from(context).inflate(R.layout.searched_list_item, parent, false);
+        return new SearchedListViewHolder(itemView, context);
     }
 
     @Override
     public void onBindViewHolder(@NonNull SearchedListViewHolder holder, int position) {
-        Recipe recipe = mRecipes.get(position);
+        Recipe recipe = recipes.get(position);
         holder.itemView.setTag(position); // set the tag to the current position
         holder.bind(recipe);
     }
 
     @Override
     public int getItemCount() {
-        return mRecipes.size();
+        return recipes.size();
     }
 
     static class SearchedListViewHolder extends RecyclerView.ViewHolder {
-        private final TextView mRecipeNameTextView;
+        private final TextView recipeNameTextView;
         private final Context context;
 
         public SearchedListViewHolder(@NonNull View itemView, Context context) {
             super(itemView);
             this.context = context;
-            mRecipeNameTextView = itemView.findViewById(R.id.searchResultsTextView);
+            recipeNameTextView = itemView.findViewById(R.id.searchResultsTextView);
         }
 
         public void bind(Recipe recipe) {
-            mRecipeNameTextView.setText(recipe.getRecipe_name());
+            recipeNameTextView.setText(recipe.getRecipe_name());
 
-            mRecipeNameTextView.setOnClickListener(new View.OnClickListener() {
+            recipeNameTextView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     // Create an Intent to start the new activity

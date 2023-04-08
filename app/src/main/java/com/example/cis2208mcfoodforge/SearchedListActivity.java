@@ -12,7 +12,6 @@ import com.example.cis2208mcfoodforge.Database.JsonReader;
 import com.example.cis2208mcfoodforge.Database.Recipe;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class SearchedListActivity extends AppCompatActivity {
@@ -27,7 +26,7 @@ public class SearchedListActivity extends AppCompatActivity {
         searchedListRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
         Intent intent = getIntent();
-        List<Recipe> recipes = Arrays.asList(JsonReader.convertJsonToRecipe(this));
+        Recipe[] recipes = JsonReader.convertJsonToRecipe(this);
 
         //getting recipe ids from intent
         List<Recipe> searchResults = new ArrayList<>();
