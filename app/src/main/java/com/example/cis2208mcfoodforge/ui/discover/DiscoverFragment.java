@@ -99,15 +99,14 @@ public class DiscoverFragment extends Fragment {
         return recipes.subList(0, Math.min(10, recipes.size()));
     }
 
-    //logic for search bar
+    //todo needs work
     private List<Integer> filter(String query) {
         List<RecipeIngredients> recipeIngredients = Arrays.asList(JsonReader.convertJsonToRecipeIngredients(requireContext()));
-        List<Ingredient> ingredients = Arrays.asList(JsonReader.convertJsonToIngredient(requireContext()));
         int match;
         List<Integer> recipeIds = new ArrayList<>();
-            for (int i=0; i<ingredients.size(); i++) {
-                if (ingredients.get(i).getIngredient_name().toLowerCase().contains(query.toLowerCase())) {
-                    match = ingredients.get(i).getIngredient_id();
+            for (int i=0; i<recipeIngredients.size(); i++) {
+                if (recipeIngredients.get(i).getRecipe_id(). recipeIds) {
+                    match = recipeIngredients.get(i).getIngredient_id();
                     for (RecipeIngredients recipeIngredient : recipeIngredients) {
                         if(recipeIngredient.getIngredient_id() == match){
                             recipeIds.add(recipeIngredient.getRecipe_id());                        }
