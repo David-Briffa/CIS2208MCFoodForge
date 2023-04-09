@@ -76,10 +76,10 @@ public class DiscoverFragment extends Fragment {
     }
 
     //all recipes with the easiest difficulty, difficulty level is stored as part of recipe's json
-    public List<Recipe> loadEasiest(List<Recipe> recipes ){
+    public List<Recipe> loadEasiest(List<Recipe> recipes) {
         List<Recipe> easiestRecipes = new ArrayList<>();
-        for(Recipe recipe : recipes){
-            if(recipe.getDifficulty() == 1){
+        for (Recipe recipe : recipes) {
+            if (recipe.getDifficulty() == 1) {
                 easiestRecipes.add(recipe);
             }
         }
@@ -87,14 +87,14 @@ public class DiscoverFragment extends Fragment {
     }
 
     //10 random recipes for the daily dishes recycler view
-    public List<Recipe> loadDailyDishes(List<Recipe> recipes ){
+    public List<Recipe> loadDailyDishes(List<Recipe> recipes) {
         Collections.shuffle(recipes);
         List<Recipe> shuffledTemp = new ArrayList<>(recipes);
         return shuffledTemp.subList(0, 10);
     }
 
     //top 10 most recipes with the highest favourite count, count is stored in json
-    public List<Recipe> loadMostFavourited(List<Recipe> recipes){
+    public List<Recipe> loadMostFavourited(List<Recipe> recipes) {
         recipes.sort(Comparator.comparingInt(Recipe::getFavourite_count).reversed());
         return recipes.subList(0, Math.min(10, recipes.size()));
     }
@@ -102,17 +102,20 @@ public class DiscoverFragment extends Fragment {
     //todo needs work
     private List<Integer> filter(String query) {
         List<RecipeIngredients> recipeIngredients = Arrays.asList(JsonReader.convertJsonToRecipeIngredients(requireContext()));
+        List<Ingredient> ingredients = Arrays.asList(JsonReader.convertJsonToIngredient(requireContext()));
         int match;
         List<Integer> recipeIds = new ArrayList<>();
-            for (int i=0; i<recipeIngredients.size(); i++) {
-                if (recipeIngredients.get(i).getRecipe_id(). recipeIds) {
-                    match = recipeIngredients.get(i).getIngredient_id();
-                    for (RecipeIngredients recipeIngredient : recipeIngredients) {
-                        if(recipeIngredient.getIngredient_id() == match){
-                            recipeIds.add(recipeIngredient.getRecipe_id());                        }
-                     }
+        for (int i = 0; i < ingredients.size(); i++) {
+            if (ingredients.get(i).getIngredient_name().toLowerCase().contains(query.toLowerCase())) {
+                match = ingredients.get(i).getIngredient_id();
+
+                for (RecipeIngredients recipeIngredient : recipeIngredients) {
+                    if (recipeIngredient.getIngredient_id() == match) {
+                        recipeIds.add(recipeIngredient.getRecipe_id());
+                    }
                 }
             }
+        }
         return recipeIds;
     }
 }
