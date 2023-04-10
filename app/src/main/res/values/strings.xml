@@ -13,4 +13,5 @@
     <string name="subtitleView">The best recipes are only a tap away</string>
     <string name="ingredients">Ingredients</string>
     <string name="your_favourites">Your Favourites</string>
+    <string name="back_to_discover">Back to Discover</string>
 </resources>
