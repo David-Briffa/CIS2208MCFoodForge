@@ -27,6 +27,8 @@ import java.util.List;
 
 public class DiscoverFragment extends Fragment {
 
+    private List<Integer> searchResults = new ArrayList<>();
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_discover, container, false);
@@ -99,8 +101,8 @@ public class DiscoverFragment extends Fragment {
         return recipes.subList(0, Math.min(10, recipes.size()));
     }
 
-    //todo needs work
     private List<Integer> filter(String query) {
+
         List<RecipeIngredients> recipeIngredients = Arrays.asList(JsonReader.convertJsonToRecipeIngredients(requireContext()));
         List<Ingredient> ingredients = Arrays.asList(JsonReader.convertJsonToIngredient(requireContext()));
         int match;
