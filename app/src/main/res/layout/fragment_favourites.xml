@@ -11,13 +11,12 @@
         android:id="@+id/favouriteTabTitleView"
         android:layout_width="281dp"
         android:layout_height="56dp"
-        android:layout_marginTop="16dp"
         android:autoSizeTextType="uniform"
         android:fontFamily="@font/libre_baskerville_bold"
         android:text="@string/your_favourites"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/backButton" />
 
     <ListView
         android:id="@+id/favouritesListView"
