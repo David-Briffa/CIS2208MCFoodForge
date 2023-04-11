@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
+//class containing methods for transforming json into arrays, one method per contract
 public class JsonReader {
     public static Ingredient[] convertJsonToIngredient(Context context) {
 

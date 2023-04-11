@@ -27,11 +27,12 @@ import java.util.List;
 
 public class DiscoverFragment extends Fragment {
 
-    private List<Integer> searchResults = new ArrayList<>();
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_discover, container, false);
+
+        //reading Json recipe database and storing it as a List
+        List<Recipe> recipes = Arrays.asList(JsonReader.convertJsonToRecipe(requireContext()));
 
         //three bindings for three recycler views
         RecyclerView dailyDishesRecycler = view.findViewById(R.id.dailyDishesRecyclerView);
@@ -42,9 +43,6 @@ public class DiscoverFragment extends Fragment {
         dailyDishesRecycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         mostFavouritedRecycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         easiestRecipesRecycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-
-        //reading Json recipe database and storing it as a List
-        List<Recipe> recipes = Arrays.asList(JsonReader.convertJsonToRecipe(requireContext()));
 
         DiscoverAdapter dailyDishesAdapter = new DiscoverAdapter(loadDailyDishes(recipes), getContext());
         DiscoverAdapter mostFavouritedAdapter = new DiscoverAdapter(loadMostFavourited(recipes), getContext());

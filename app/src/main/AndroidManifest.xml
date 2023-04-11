@@ -30,7 +30,15 @@
         <activity
             android:name=".RecipeDetailsActivity"
             android:label="FoodForge"
-            android:screenOrientation="sensor"/>
+            android:screenOrientation="sensor"
+            android:parentActivityName=".MainActivity">
+
+            <!-- back button  -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
 
         <activity
             android:name=".SearchedListActivity"
@@ -38,7 +46,7 @@
             android:screenOrientation="sensor"
             android:parentActivityName=".MainActivity">
 
-
+            <!-- back button  -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />

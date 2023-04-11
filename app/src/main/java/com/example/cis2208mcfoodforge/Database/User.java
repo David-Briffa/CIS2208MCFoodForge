@@ -1,5 +1,6 @@
 package com.example.cis2208mcfoodforge.Database;
 
+//contract class for User json
 public class User {
     private final int user_id;
     private final String user_name;
@@ -8,11 +9,9 @@ public class User {
     public int getUser_id() {
         return user_id;
     }
-
     public String getUser_name() {
         return user_name;
     }
-
     public String getUser_surname() {
         return user_surname;
     }

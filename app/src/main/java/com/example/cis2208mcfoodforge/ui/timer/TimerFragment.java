@@ -41,6 +41,7 @@ public class TimerFragment extends Fragment {
         alarmTimePicker = root.findViewById(R.id.timer);
         alarmManager = (AlarmManager) requireContext().getSystemService(ALARM_SERVICE);
         Intent intent = new Intent(getContext(), TimerReceiver.class);
+
         //Pending intent is used since the alarm will be set for the future
         //the intent will hence be triggered when the alarm reaches its destination
         pendingIntent = PendingIntent.getBroadcast(getContext(), 1001, intent, PendingIntent.FLAG_IMMUTABLE);

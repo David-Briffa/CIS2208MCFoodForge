@@ -39,15 +39,6 @@ public class SearchedListActivity extends AppCompatActivity {
         RecyclerView searchedListRecyclerView = findViewById(R.id.searchedListRecyclerView);
         searchedListRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-        //back button to return to discover
-        Button backButton = findViewById(R.id.backButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-
         Intent intent = getIntent();
         Recipe[] recipes = JsonReader.convertJsonToRecipe(this);
 
@@ -69,16 +60,7 @@ public class SearchedListActivity extends AppCompatActivity {
         searchedListRecyclerView.setAdapter(adapter);
     }
 
-    @Override
-    public void onBackPressed() {
-        FragmentManager fragmentManager = getSupportFragmentManager();
 
-        if (fragmentManager.getBackStackEntryCount() > 1) {
-            fragmentManager.popBackStack();
-        } else {
-            super.onBackPressed();
-        }
-    }
 }
 
 

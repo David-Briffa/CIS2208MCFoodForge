@@ -51,7 +51,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         String foodDescription = intent.getStringExtra("description");
         int favouriteCount = intent.getIntExtra("favouriteCount", 0); // default value 0
         int foodImageId = intent.getIntExtra("id", 0);
-        int difficulty = intent.getIntExtra("difficulty",0);
+        int difficulty = intent.getIntExtra("difficulty", 0);
         int authorId = intent.getIntExtra("author", 0);
 
         //pseudo SQL union for JSON data
@@ -59,12 +59,12 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         String imageFilename = imageHashMap.get(foodImageId);
         RequestOptions requestOptions = new RequestOptions();
 
-            for(RecipeIngredients recIngredient : recipeIngredients) {
-                int commonIng = recIngredient.getRecipe_id();
-                if (commonIng == foodImageId) {
-                    ingredientsUsed.add(recIngredient.getIngredient_id());
-                }
+        for (RecipeIngredients recIngredient : recipeIngredients) {
+            int commonIng = recIngredient.getRecipe_id();
+            if (commonIng == foodImageId) {
+                ingredientsUsed.add(recIngredient.getIngredient_id());
             }
+        }
 
         //pseudo SQL union for JSON data
         author = findAuthor(users, authorId);
@@ -73,8 +73,11 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         DbHelper dbHelper = new DbHelper(RecipeDetailsActivity.this);
         boolean isFavorite = dbHelper.isFavoriteButton(foodImageId);
 
-        if(isFavorite) { addButton.setBackgroundResource(R.drawable.ic_heart_selected_foreground); }
-        else{ addButton.setBackgroundResource(R.drawable.ic_heart_unselected_foreground); }
+        if (isFavorite) {
+            addButton.setBackgroundResource(R.drawable.ic_heart_selected_foreground);
+        } else {
+            addButton.setBackgroundResource(R.drawable.ic_heart_unselected_foreground);
+        }
 
         //binding views
         ImageView imageView = findViewById(R.id.recipeImageView);
@@ -94,9 +97,9 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         StringBuilder ingredientsForView = new StringBuilder();
 
         //pseudo SQL union for JSON data
-        for(int id : ingredientsUsed){
-            for(int i = 0; i< ingredients.size(); i++){
-                if(ingredients.get(i).getIngredient_id() == id){
+        for (int id : ingredientsUsed) {
+            for (int i = 0; i < ingredients.size(); i++) {
+                if (ingredients.get(i).getIngredient_id() == id) {
                     ingredientsForView.append(ingredients.get(i).getIngredient_name());
                     ingredientsForView.append("\n");
                     ingredientView.setText(ingredientsForView);
@@ -119,34 +122,15 @@ public class RecipeDetailsActivity extends AppCompatActivity {
                 DbHelper dbHelper = new DbHelper(RecipeDetailsActivity.this);
                 boolean isFavorite = dbHelper.isFavoriteButton(foodImageId);
 
-                if(isFavorite){
+                if (isFavorite) {
                     dbHelper.removeFavourite(foodImageId);
                     addButton.setBackgroundResource(R.drawable.ic_heart_unselected_foreground);
-                }
-                else{
+                } else {
                     dbHelper.addFavourite(foodImageId);
                     addButton.setBackgroundResource(R.drawable.ic_heart_selected_foreground);
                 }
             }
         });
-        //back button to return to previous screen
-        Button backButton = findViewById(R.id.backButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-    }
-    @Override
-    public void onBackPressed() {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-
-        if (fragmentManager.getBackStackEntryCount() > 1) {
-            fragmentManager.popBackStack();
-        } else {
-            super.onBackPressed();
-        }
     }
     public String findAuthor(List<User> users,int authorId){
         String author = "";

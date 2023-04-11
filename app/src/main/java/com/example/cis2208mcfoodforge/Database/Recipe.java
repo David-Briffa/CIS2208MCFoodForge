@@ -1,5 +1,6 @@
 package com.example.cis2208mcfoodforge.Database;
 
+//contract class for Recipe json
 public class Recipe {
     private final String recipe_description;
     private final String recipe_name;
@@ -8,23 +9,18 @@ public class Recipe {
     private final int recipe_id;
     private final int difficulty;
 
-
     public String getRecipe_description() {
         return recipe_description;
     }
-
     public String getRecipe_name() {
         return recipe_name;
     }
-
     public int getFavourite_count() {
         return favourite_count;
     }
-
     public int getUser_id() {
         return user_id;
     }
-
     public int getRecipe_id() {
         return recipe_id;
     }

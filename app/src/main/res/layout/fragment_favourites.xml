@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.favourites.FavouritesFragment">
 
-
     <TextView
         android:id="@+id/favouriteTabTitleView"
         android:layout_width="281dp"
