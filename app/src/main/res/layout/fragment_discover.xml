@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:id="@+id/ScrollView"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -14,14 +14,14 @@
 
         <SearchView
             android:id="@+id/searchView"
-            android:layout_width="310dp"
-            android:layout_height="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:iconifiedByDefault="false"
             android:queryHint="Find your next recipe..."
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.357"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/subtitleView"
+            app:layout_constraintHorizontal_bias="0.513"
+            app:layout_constraintStart_toStartOf="@+id/subtitleView"
             app:layout_constraintTop_toBottomOf="@+id/subtitleView" />
 
         <TextView
@@ -48,8 +48,8 @@
 
         <TextView
             android:id="@+id/dailyDishesTitleTextView"
-            android:layout_width="225dp"
-            android:layout_height="33dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/libre_baskerville_regular"
             android:text="@string/dailyDishesTitleTextView"
@@ -61,8 +61,8 @@
 
         <TextView
             android:id="@+id/dailyDishesDescriptionTextView"
-            android:layout_width="320dp"
-            android:layout_height="21dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/libre_baskerville_italic"
             android:text="@string/dailyDishesDescriptionTextView"
@@ -74,8 +74,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/dailyDishesRecyclerView"
-            android:layout_width="408dp"
-            android:layout_height="300dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -84,8 +84,8 @@
 
         <TextView
             android:id="@+id/mostFavouritedTitleView"
-            android:layout_width="225dp"
-            android:layout_height="33dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/libre_baskerville_regular"
             android:text="@string/mostFavouritedTitleView"
@@ -97,8 +97,8 @@
 
         <TextView
             android:id="@+id/mostFavouritedDescriptionView"
-            android:layout_width="320dp"
-            android:layout_height="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/libre_baskerville_italic"
             android:text="@string/mostFavouritedDescriptionView"
@@ -110,8 +110,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/mostFavouritedRecyclerView"
-            android:layout_width="410dp"
-            android:layout_height="300dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -120,8 +120,8 @@
 
         <TextView
             android:id="@+id/easiestRecipesTitleView"
-            android:layout_width="225dp"
-            android:layout_height="33dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/libre_baskerville_regular"
             android:text="@string/easiestRecipesTitleView"
@@ -133,8 +133,8 @@
 
         <TextView
             android:id="@+id/easiestRecipesDescriptionView"
-            android:layout_width="320dp"
-            android:layout_height="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/libre_baskerville_italic"
             android:text="@string/easiestRecipesDescriptionView"
@@ -146,8 +146,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/easiestRecipesRecyclerView"
-            android:layout_width="410dp"
-            android:layout_height="300dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
