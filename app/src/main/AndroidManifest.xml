@@ -28,8 +28,9 @@
             </intent-filter>
         </activity>
         <activity
+
             android:name=".RecipeDetailsActivity"
-            android:label="FoodForge"
+            android:label="Details"
             android:screenOrientation="sensor"
             android:parentActivityName=".MainActivity">
 
@@ -42,7 +43,7 @@
 
         <activity
             android:name=".SearchedListActivity"
-            android:label="FoodForge"
+            android:label="Search Results"
             android:screenOrientation="sensor"
             android:parentActivityName=".MainActivity">
 
