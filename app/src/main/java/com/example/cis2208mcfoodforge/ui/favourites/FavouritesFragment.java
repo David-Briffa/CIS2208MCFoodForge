@@ -51,6 +51,7 @@ public class FavouritesFragment extends Fragment {
         listView.setAdapter(adapter);
 
     }
+    //for users to able to upload an image for their favourites list
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
