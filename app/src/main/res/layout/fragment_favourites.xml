@@ -12,10 +12,29 @@
     android:layout_height="wrap_content"
     tools:context=".ui.favourites.FavouritesFragment">
 
+    <Button
+        android:id="@+id/chooseImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/upload_an_image"
+        app:layout_constraintEnd_toEndOf="@+id/uploadImageView"
+        app:layout_constraintStart_toStartOf="@+id/uploadImageView"
+        app:layout_constraintTop_toBottomOf="@+id/uploadImageView" />
+
+    <ImageView
+        android:id="@+id/uploadImageView"
+        android:layout_width="129dp"
+        android:layout_height="130dp"
+        android:layout_gravity="center_horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/favouriteTabTitleView"
+        app:layout_constraintStart_toStartOf="@+id/favouriteTabTitleView"
+        app:layout_constraintTop_toBottomOf="@+id/favouriteTabTitleView" />
+
     <TextView
         android:id="@+id/favouriteTabTitleView"
         android:layout_width="281dp"
         android:layout_height="56dp"
+        android:layout_marginTop="4dp"
         android:autoSizeTextType="uniform"
         android:fontFamily="@font/libre_baskerville_bold"
         android:text="@string/your_favourites"
@@ -25,13 +44,12 @@
 
     <ListView
         android:id="@+id/favouritesListView"
-        android:layout_width="409dp"
-        android:layout_height="687dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/favouriteTabTitleView"
-        app:layout_constraintVertical_bias="0.0"
+        android:layout_width="374dp"
+        android:layout_height="584dp"
+        app:layout_constraintEnd_toEndOf="@+id/chooseImage"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="@+id/chooseImage"
+        app:layout_constraintTop_toBottomOf="@+id/chooseImage"
         tools:ignore="NestedScrolling" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
