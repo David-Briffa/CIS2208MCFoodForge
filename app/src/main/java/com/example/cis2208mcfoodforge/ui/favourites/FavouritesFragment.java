@@ -29,8 +29,8 @@ public class FavouritesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_favourites, container, false);
         listView = view.findViewById(R.id.favouritesListView);
 
+        //opens the users' gallery
         Button button = view.findViewById(R.id.chooseImage);
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,7 +51,7 @@ public class FavouritesFragment extends Fragment {
         listView.setAdapter(adapter);
 
     }
-    //for users to able to upload an image for their favourites list
+    //allows users to upload an image for their favourites list
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
