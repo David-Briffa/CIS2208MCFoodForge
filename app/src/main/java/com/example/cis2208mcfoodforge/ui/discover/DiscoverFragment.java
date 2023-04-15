@@ -17,7 +17,7 @@ import com.example.cis2208mcfoodforge.Database.JsonReader;
 import com.example.cis2208mcfoodforge.Database.Recipe;
 import com.example.cis2208mcfoodforge.Database.RecipeIngredients;
 import com.example.cis2208mcfoodforge.R;
-import com.example.cis2208mcfoodforge.SearchedListActivity;
+import com.example.cis2208mcfoodforge.ui.search.SearchedListActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -99,6 +99,7 @@ public class DiscoverFragment extends Fragment {
         return recipes.subList(0, Math.min(10, recipes.size()));
     }
 
+    // method used by the search view to return recipes containing the searched ingredient
     private List<Integer> filter(String query) {
 
         List<RecipeIngredients> recipeIngredients = Arrays.asList(JsonReader.convertJsonToRecipeIngredients(requireContext()));

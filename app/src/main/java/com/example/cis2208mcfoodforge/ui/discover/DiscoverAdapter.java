@@ -18,7 +18,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.cis2208mcfoodforge.Database.Recipe;
 import com.example.cis2208mcfoodforge.R;
-import com.example.cis2208mcfoodforge.RecipeDetailsActivity;
+import com.example.cis2208mcfoodforge.ui.RecipeDetailsActivity;
 
 import java.util.HashMap;
 import java.util.List;

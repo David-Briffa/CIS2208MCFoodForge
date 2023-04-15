@@ -46,13 +46,12 @@ public class TimerFragment extends Fragment {
         //the intent will hence be triggered when the alarm reaches its destination
         pendingIntent = PendingIntent.getBroadcast(getContext(), 1001, intent, PendingIntent.FLAG_IMMUTABLE);
 
-        //Activates the alarm when switched on
+        //Changes alarm state
         ToggleButton toggleButton = root.findViewById(R.id.toggle);
         toggleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (pendingIntent != null) {
-                    System.out.println("cheese");
                     setAlarm(v);
                 }
             }

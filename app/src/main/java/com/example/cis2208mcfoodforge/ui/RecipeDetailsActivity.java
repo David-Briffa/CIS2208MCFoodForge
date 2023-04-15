@@ -1,4 +1,4 @@
-package com.example.cis2208mcfoodforge;
+package com.example.cis2208mcfoodforge.ui;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
@@ -19,6 +18,8 @@ import com.example.cis2208mcfoodforge.Database.Ingredient;
 import com.example.cis2208mcfoodforge.Database.JsonReader;
 import com.example.cis2208mcfoodforge.Database.RecipeIngredients;
 import com.example.cis2208mcfoodforge.Database.User;
+import com.example.cis2208mcfoodforge.DbHelper;
+import com.example.cis2208mcfoodforge.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -14,7 +14,7 @@ import com.example.cis2208mcfoodforge.Database.JsonReader;
 import com.example.cis2208mcfoodforge.Database.Recipe;
 import com.example.cis2208mcfoodforge.DbHelper;
 import com.example.cis2208mcfoodforge.R;
-import com.example.cis2208mcfoodforge.RecipeDetailsActivity;
+import com.example.cis2208mcfoodforge.ui.RecipeDetailsActivity;
 
 import java.util.Arrays;
 import java.util.List;

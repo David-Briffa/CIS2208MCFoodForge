@@ -1,4 +1,4 @@
-package com.example.cis2208mcfoodforge;
+package com.example.cis2208mcfoodforge.ui.search;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -11,10 +11,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.cis2208mcfoodforge.Database.JsonReader;
 import com.example.cis2208mcfoodforge.Database.Recipe;
+import com.example.cis2208mcfoodforge.R;
+import com.example.cis2208mcfoodforge.ui.RecipeDetailsActivity;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class SearchListAdapter extends RecyclerView.Adapter<SearchListAdapter.SearchedListViewHolder> {
@@ -77,6 +77,5 @@ public class SearchListAdapter extends RecyclerView.Adapter<SearchListAdapter.Se
                 }
             });
         }
-
     }
 }

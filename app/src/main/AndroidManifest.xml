@@ -28,7 +28,7 @@
         </activity>
         <activity
 
-            android:name=".RecipeDetailsActivity"
+            android:name=".ui.RecipeDetailsActivity"
             android:label="Details"
             android:screenOrientation="sensor"
             android:parentActivityName=".MainActivity">
@@ -41,7 +41,7 @@
 
 
         <activity
-            android:name=".SearchedListActivity"
+            android:name=".ui.search.SearchedListActivity"
             android:label="Search Results"
             android:screenOrientation="sensor"
             android:parentActivityName=".MainActivity">

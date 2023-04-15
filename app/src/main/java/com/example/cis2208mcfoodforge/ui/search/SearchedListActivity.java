@@ -1,30 +1,16 @@
-package com.example.cis2208mcfoodforge;
+package com.example.cis2208mcfoodforge.ui.search;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.SearchView;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.FragmentManager;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cis2208mcfoodforge.Database.JsonReader;
 import com.example.cis2208mcfoodforge.Database.Recipe;
-import com.example.cis2208mcfoodforge.Database.RecipeIngredients;
-import com.example.cis2208mcfoodforge.ui.discover.DiscoverFragment;
-import com.example.cis2208mcfoodforge.ui.favourites.FavouritesFragment;
-import com.example.cis2208mcfoodforge.ui.timer.TimerFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.example.cis2208mcfoodforge.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,14 +39,13 @@ public class SearchedListActivity extends AppCompatActivity {
                     }
                 }
             }
-        } else {
+        }
+        else {
             System.out.println("False");
         }
         SearchListAdapter adapter = new SearchListAdapter(searchResults, this);
         searchedListRecyclerView.setAdapter(adapter);
     }
-
-
 }
 
 

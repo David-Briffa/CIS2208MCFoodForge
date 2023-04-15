@@ -26,7 +26,6 @@ public class DbHelper extends SQLiteOpenHelper {
         this.context = context;
     }
 
-
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
@@ -58,6 +57,8 @@ public class DbHelper extends SQLiteOpenHelper {
         }
         db.close();
     }
+
+    //does what it says
     public void removeFavourite(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -69,7 +70,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    //checks whether a recipe is favourited for button icon changing purposes
+    //checks whether a recipe is a favourite for button icon changing purposes
     public boolean isFavoriteButton(int buttonId) {
         SQLiteDatabase db = getReadableDatabase();
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + RECIPE_ID + " = ?";
@@ -80,7 +81,7 @@ public class DbHelper extends SQLiteOpenHelper {
         return isFavorite;
     }
 
-
+    //Request all favourite dish ids from within the database, used by the favourites fragment to populate the view
     public Cursor getFavourites() {
         SQLiteDatabase db = getReadableDatabase();
         String query = "SELECT recipe_id as _id FROM " + TABLE_NAME;
