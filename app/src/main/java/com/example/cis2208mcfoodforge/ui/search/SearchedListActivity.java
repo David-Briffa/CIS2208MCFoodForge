@@ -8,8 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.cis2208mcfoodforge.Database.JsonReader;
-import com.example.cis2208mcfoodforge.Database.Recipe;
+import com.example.cis2208mcfoodforge.JsonClasses.JsonReader;
+import com.example.cis2208mcfoodforge.JsonClasses.Recipe;
 import com.example.cis2208mcfoodforge.R;
 
 import java.util.ArrayList;

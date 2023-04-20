@@ -14,11 +14,11 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.cis2208mcfoodforge.Database.Ingredient;
-import com.example.cis2208mcfoodforge.Database.JsonReader;
-import com.example.cis2208mcfoodforge.Database.RecipeIngredients;
-import com.example.cis2208mcfoodforge.Database.User;
-import com.example.cis2208mcfoodforge.DbHelper;
+import com.example.cis2208mcfoodforge.JsonClasses.Ingredient;
+import com.example.cis2208mcfoodforge.JsonClasses.JsonReader;
+import com.example.cis2208mcfoodforge.JsonClasses.RecipeIngredients;
+import com.example.cis2208mcfoodforge.JsonClasses.User;
+import com.example.cis2208mcfoodforge.Database.DbHelper;
 import com.example.cis2208mcfoodforge.R;
 
 import java.util.ArrayList;

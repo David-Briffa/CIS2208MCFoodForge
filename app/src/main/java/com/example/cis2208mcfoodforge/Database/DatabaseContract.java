@@ -1,4 +1,4 @@
-package com.example.cis2208mcfoodforge.databases;
+package com.example.cis2208mcfoodforge.Database;
 
 import android.provider.BaseColumns;
 public final class DatabaseContract {

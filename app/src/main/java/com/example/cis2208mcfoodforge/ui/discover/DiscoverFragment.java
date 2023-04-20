@@ -12,10 +12,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.cis2208mcfoodforge.Database.Ingredient;
-import com.example.cis2208mcfoodforge.Database.JsonReader;
-import com.example.cis2208mcfoodforge.Database.Recipe;
-import com.example.cis2208mcfoodforge.Database.RecipeIngredients;
+import com.example.cis2208mcfoodforge.JsonClasses.Ingredient;
+import com.example.cis2208mcfoodforge.JsonClasses.JsonReader;
+import com.example.cis2208mcfoodforge.JsonClasses.Recipe;
+import com.example.cis2208mcfoodforge.JsonClasses.RecipeIngredients;
 import com.example.cis2208mcfoodforge.R;
 import com.example.cis2208mcfoodforge.ui.search.SearchedListActivity;
 

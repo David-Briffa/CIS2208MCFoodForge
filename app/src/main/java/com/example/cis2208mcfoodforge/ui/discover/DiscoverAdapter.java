@@ -16,7 +16,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.cis2208mcfoodforge.Database.Recipe;
+import com.example.cis2208mcfoodforge.JsonClasses.Recipe;
 import com.example.cis2208mcfoodforge.R;
 import com.example.cis2208mcfoodforge.ui.RecipeDetailsActivity;
 

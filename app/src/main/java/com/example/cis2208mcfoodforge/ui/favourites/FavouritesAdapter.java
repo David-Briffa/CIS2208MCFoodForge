@@ -10,9 +10,9 @@ import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
 
-import com.example.cis2208mcfoodforge.Database.JsonReader;
-import com.example.cis2208mcfoodforge.Database.Recipe;
-import com.example.cis2208mcfoodforge.DbHelper;
+import com.example.cis2208mcfoodforge.JsonClasses.JsonReader;
+import com.example.cis2208mcfoodforge.JsonClasses.Recipe;
+import com.example.cis2208mcfoodforge.Database.DbHelper;
 import com.example.cis2208mcfoodforge.R;
 import com.example.cis2208mcfoodforge.ui.RecipeDetailsActivity;
 

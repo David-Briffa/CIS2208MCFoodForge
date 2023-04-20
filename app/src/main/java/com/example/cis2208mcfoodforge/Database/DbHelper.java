@@ -1,4 +1,4 @@
-package com.example.cis2208mcfoodforge;
+package com.example.cis2208mcfoodforge.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import com.example.cis2208mcfoodforge.databases.DatabaseContract;
+import com.example.cis2208mcfoodforge.Database.DatabaseContract;
 
 //database helper class for use with the favourites database component of the application
 public class DbHelper extends SQLiteOpenHelper {

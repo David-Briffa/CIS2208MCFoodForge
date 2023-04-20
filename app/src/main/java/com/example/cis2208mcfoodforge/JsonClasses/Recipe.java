@@ -1,4 +1,4 @@
-package com.example.cis2208mcfoodforge.Database;
+package com.example.cis2208mcfoodforge.JsonClasses;
 
 //contract class for Recipe json
 public class Recipe {

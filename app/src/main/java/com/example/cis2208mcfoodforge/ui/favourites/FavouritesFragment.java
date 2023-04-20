@@ -15,10 +15,9 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.cis2208mcfoodforge.DbHelper;
+import com.example.cis2208mcfoodforge.Database.DbHelper;
 import com.example.cis2208mcfoodforge.R;
 
 public class FavouritesFragment extends Fragment {
