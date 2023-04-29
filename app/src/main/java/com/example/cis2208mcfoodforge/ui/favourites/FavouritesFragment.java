@@ -30,12 +30,9 @@ public class FavouritesFragment extends Fragment {
 
         //opens the users' gallery
         Button button = view.findViewById(R.id.chooseImage);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(intent, 3);
-            }
+        button.setOnClickListener(view1 -> {
+            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            startActivityForResult(intent, 3);
         });
         return view;
     }

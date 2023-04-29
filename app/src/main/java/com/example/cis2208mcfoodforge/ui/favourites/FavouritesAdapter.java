@@ -56,33 +56,27 @@ public class FavouritesAdapter extends CursorAdapter {
         valueTextView.setText(selectedRecipe.getRecipe_name());
 
         //tapping on the favourite item redirects you to its details activity
-        valueTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, RecipeDetailsActivity.class);
+        valueTextView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, RecipeDetailsActivity.class);
 
-                //passing individual attributes instead of whole recipe
-                //unsure if good practice
-                intent.putExtra("recipeName", selectedRecipe.getRecipe_name());
-                intent.putExtra("description", selectedRecipe.getRecipe_description());
-                intent.putExtra("favouriteCount", selectedRecipe.getFavourite_count());
-                intent.putExtra("id", selectedRecipe.getRecipe_id());
-                intent.putExtra("difficulty", selectedRecipe.getDifficulty());
-                intent.putExtra("author", selectedRecipe.getUser_id());
+            //passing individual attributes instead of whole recipe
+            //unsure if good practice
+            intent.putExtra("recipeName", selectedRecipe.getRecipe_name());
+            intent.putExtra("description", selectedRecipe.getRecipe_description());
+            intent.putExtra("favouriteCount", selectedRecipe.getFavourite_count());
+            intent.putExtra("id", selectedRecipe.getRecipe_id());
+            intent.putExtra("difficulty", selectedRecipe.getDifficulty());
+            intent.putExtra("author", selectedRecipe.getUser_id());
 
-                context.startActivity(intent);
-            }
+            context.startActivity(intent);
         });
 
         //The heart icon in the favourites interface removes an item from the database and refreshes the view
-        favButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DbHelper dbHelper = new DbHelper(context);
-                dbHelper.removeFavourite(selectedRecipe.getRecipe_id());
-                Cursor newCursor = dbHelper.getFavourites();
-                swapCursor(newCursor);
-            }
+        favButton.setOnClickListener(view1 -> {
+            DbHelper dbHelper = new DbHelper(context);
+            dbHelper.removeFavourite(selectedRecipe.getRecipe_id());
+            Cursor newCursor = dbHelper.getFavourites();
+            swapCursor(newCursor);
         });
     }
 }

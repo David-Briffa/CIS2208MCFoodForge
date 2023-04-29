@@ -102,7 +102,7 @@ public class DiscoverFragment extends Fragment {
     // method used by the search view to return recipes containing the searched ingredient
     private List<Integer> filter(String query) {
 
-        List<RecipeIngredients> recipeIngredients = Arrays.asList(JsonReader.convertJsonToRecipeIngredients(requireContext()));
+        RecipeIngredients[] recipeIngredients = JsonReader.convertJsonToRecipeIngredients(requireContext());
         List<Ingredient> ingredients = Arrays.asList(JsonReader.convertJsonToIngredient(requireContext()));
         int match;
         List<Integer> recipeIds = new ArrayList<>();

@@ -57,15 +57,13 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.Recipe
         Glide.with(context)
                 .load("file:///android_asset/" + imageFilename)
                 .apply(requestOptions
-                        .transforms(new CenterCrop(), new RoundedCorners(40))
+                        .transform(new CenterCrop(), new RoundedCorners(40))
                         .override(600))
                 .into(holder.recipeImageView);
-        holder.recipeImageView.setOnClickListener(new View.OnClickListener() {
 
         //clicking on a recycler view image on this fragment opens the recipe Details activity
         //also sends the details related to the selected recipe as an intent
-        @Override
-        public void onClick(View view) {
+        holder.recipeImageView.setOnClickListener(view -> {
             Recipe selectedRecipe = recipes.get(position);
             Intent intent = new Intent(context, RecipeDetailsActivity.class);
 
@@ -77,8 +75,7 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.Recipe
             intent.putExtra("author", selectedRecipe.getUser_id());
 
             context.startActivity(intent);
-            }
-        });
+            });
     }
 
     @Override

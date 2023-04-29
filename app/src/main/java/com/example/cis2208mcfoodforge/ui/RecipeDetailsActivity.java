@@ -36,7 +36,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_details);
         List<Ingredient> ingredients = Arrays.asList(JsonReader.convertJsonToIngredient(this));
-        List<RecipeIngredients> recipeIngredients = Arrays.asList(JsonReader.convertJsonToRecipeIngredients(this));
+        RecipeIngredients[] recipeIngredients = JsonReader.convertJsonToRecipeIngredients(this);
         List<User> users = Arrays.asList(JsonReader.convertJsonToUser(this));
         addButton = findViewById(R.id.favButton);
         String author = "";
@@ -112,9 +112,10 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         Glide.with(this)
                 .load("file:///android_asset/" + imageFilename)
                 .apply(requestOptions
-                        .transforms(new CenterCrop(), new RoundedCorners(40))
+                        .transform(new CenterCrop(), new RoundedCorners(40))
                         .override(600))
                 .into(imageView);
+
 
         //favourite button
         addButton.setOnClickListener(new View.OnClickListener() {
