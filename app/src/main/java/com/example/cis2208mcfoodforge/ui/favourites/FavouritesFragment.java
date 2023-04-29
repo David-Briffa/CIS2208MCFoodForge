@@ -14,27 +14,59 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.example.cis2208mcfoodforge.Database.DbHelper;
 import com.example.cis2208mcfoodforge.R;
 
 public class FavouritesFragment extends Fragment {
     private ListView listView;
+    private ImageView imageView;
+    private ActivityResultLauncher<String> pickImageLauncher;
+    private Uri selectedImageUri;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_favourites, container, false);
         listView = view.findViewById(R.id.favouritesListView);
+        imageView = view.findViewById(R.id.uploadImageView);
 
-        //opens the users' gallery
+        // Restore selected image URI from saved state, if any
+        if (savedInstanceState != null) {
+            selectedImageUri = savedInstanceState.getParcelable("selectedImageUri");
+            if (selectedImageUri != null) {
+                Glide.with(requireContext()).load(selectedImageUri).into(imageView);
+            }
+        }
+
+        pickImageLauncher = registerForActivityResult(new ActivityResultContracts.GetContent(),
+                new ActivityResultCallback<Uri>() {
+                    @Override
+                    public void onActivityResult(Uri uri) {
+                        selectedImageUri = uri;
+                        Glide.with(requireContext()).load(uri).into(imageView);
+                    }
+                });
+
         Button button = view.findViewById(R.id.chooseImage);
         button.setOnClickListener(view1 -> {
-            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            startActivityForResult(intent, 3);
+            pickImageLauncher.launch("image/*");
         });
+
         return view;
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if (selectedImageUri != null) {
+            outState.putParcelable("selectedImageUri", selectedImageUri);
+        }
     }
 
     //Queries the user's favourites database and binds them to the view
@@ -46,15 +78,5 @@ public class FavouritesFragment extends Fragment {
         FavouritesAdapter adapter = new FavouritesAdapter(getContext(), cursor);
         listView.setAdapter(adapter);
 
-    }
-    //allows users to upload an image for their favourites list
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK && data != null){
-            Uri selectedImage = data.getData();
-            ImageView image = getView().findViewById(R.id.uploadImageView);
-            image.setImageURI(selectedImage);
-        }
     }
 }
