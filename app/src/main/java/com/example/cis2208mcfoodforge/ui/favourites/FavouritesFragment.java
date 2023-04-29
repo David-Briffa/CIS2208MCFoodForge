@@ -31,7 +31,7 @@ public class FavouritesFragment extends Fragment {
         listView = view.findViewById(R.id.favouritesListView);
         imageView = view.findViewById(R.id.uploadImageView);
 
-        // Restore selected image URI from saved state, if any
+        // Restore selected image URI from saved state if exists, so image upload persists through tabs
         if (savedInstanceState != null) {
             selectedImageUri = savedInstanceState.getParcelable("selectedImageUri");
             if (selectedImageUri != null) {

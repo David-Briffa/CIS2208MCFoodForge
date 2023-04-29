@@ -53,7 +53,7 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.Recipe
 
         holder.bind(recipe.getRecipe_name());
 
-        //image binding and modification, uses a deprecated method
+        //image binding and modification
         Glide.with(context)
                 .load("file:///android_asset/" + imageFilename)
                 .apply(requestOptions
