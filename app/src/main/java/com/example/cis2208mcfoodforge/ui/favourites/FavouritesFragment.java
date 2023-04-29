@@ -1,12 +1,8 @@
 package com.example.cis2208mcfoodforge.ui.favourites;
 
-import static android.app.Activity.RESULT_OK;
-
-import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +10,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
@@ -45,18 +40,13 @@ public class FavouritesFragment extends Fragment {
         }
 
         pickImageLauncher = registerForActivityResult(new ActivityResultContracts.GetContent(),
-                new ActivityResultCallback<Uri>() {
-                    @Override
-                    public void onActivityResult(Uri uri) {
-                        selectedImageUri = uri;
-                        Glide.with(requireContext()).load(uri).into(imageView);
-                    }
+                uri -> {
+                    selectedImageUri = uri;
+                    Glide.with(requireContext()).load(uri).into(imageView);
                 });
 
         Button button = view.findViewById(R.id.chooseImage);
-        button.setOnClickListener(view1 -> {
-            pickImageLauncher.launch("image/*");
-        });
+        button.setOnClickListener(view1 -> pickImageLauncher.launch("image/*"));
 
         return view;
     }

@@ -3,7 +3,6 @@ package com.example.cis2208mcfoodforge.ui;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,11 +13,11 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.cis2208mcfoodforge.Database.DbHelper;
 import com.example.cis2208mcfoodforge.JsonClasses.Ingredient;
 import com.example.cis2208mcfoodforge.JsonClasses.JsonReader;
 import com.example.cis2208mcfoodforge.JsonClasses.RecipeIngredients;
 import com.example.cis2208mcfoodforge.JsonClasses.User;
-import com.example.cis2208mcfoodforge.Database.DbHelper;
 import com.example.cis2208mcfoodforge.R;
 
 import java.util.ArrayList;
@@ -39,7 +38,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         RecipeIngredients[] recipeIngredients = JsonReader.convertJsonToRecipeIngredients(this);
         List<User> users = Arrays.asList(JsonReader.convertJsonToUser(this));
         addButton = findViewById(R.id.favButton);
-        String author = "";
+        String author;
 
         //loading images using the method at the bottom
         HashMap<Integer, String> imageHashMap = new HashMap<>();
@@ -118,25 +117,22 @@ public class RecipeDetailsActivity extends AppCompatActivity {
 
 
         //favourite button
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DbHelper dbHelper = new DbHelper(RecipeDetailsActivity.this);
-                boolean isFavorite = dbHelper.isFavoriteButton(foodImageId);
+        addButton.setOnClickListener(view -> {
+            DbHelper dbHelper1 = new DbHelper(RecipeDetailsActivity.this);
+            boolean isFavorite1 = dbHelper1.isFavoriteButton(foodImageId);
 
-                if (isFavorite) {
-                    dbHelper.removeFavourite(foodImageId);
-                    addButton.setBackgroundResource(R.drawable.ic_heart_unselected_foreground);
-                } else {
-                    dbHelper.addFavourite(foodImageId);
-                    addButton.setBackgroundResource(R.drawable.ic_heart_selected_foreground);
-                }
+            if (isFavorite1) {
+                dbHelper1.removeFavourite(foodImageId);
+                addButton.setBackgroundResource(R.drawable.ic_heart_unselected_foreground);
+            } else {
+                dbHelper1.addFavourite(foodImageId);
+                addButton.setBackgroundResource(R.drawable.ic_heart_selected_foreground);
             }
         });
     }
     public String findAuthor(List<User> users,int authorId){
-        String author = "";
-        int userId = 0;
+        String author;
+        int userId;
         for(User user : users) {
             userId = user.getUser_id();
             if (userId == authorId) {

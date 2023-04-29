@@ -59,22 +59,19 @@ public class SearchListAdapter extends RecyclerView.Adapter<SearchListAdapter.Se
         public void bind(Recipe recipe) {
             recipeNameTextView.setText(recipe.getRecipe_name());
 
-            recipeNameTextView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // Create an Intent to start the new activity
-                    Intent intent = new Intent(context, RecipeDetailsActivity.class);
+            recipeNameTextView.setOnClickListener(v -> {
+                // Create an Intent to start the new activity
+                Intent intent = new Intent(context, RecipeDetailsActivity.class);
 
-                    // Add any data to the Intent, if needed
-                    intent.putExtra("recipeName", recipe.getRecipe_name());
-                    intent.putExtra("description", recipe.getRecipe_description());
-                    intent.putExtra("favouriteCount", recipe.getFavourite_count());
-                    intent.putExtra("id", recipe.getRecipe_id());
-                    intent.putExtra("difficulty", recipe.getDifficulty());
-                    intent.putExtra("author", recipe.getUser_id());
+                // Add any data to the Intent, if needed
+                intent.putExtra("recipeName", recipe.getRecipe_name());
+                intent.putExtra("description", recipe.getRecipe_description());
+                intent.putExtra("favouriteCount", recipe.getFavourite_count());
+                intent.putExtra("id", recipe.getRecipe_id());
+                intent.putExtra("difficulty", recipe.getDifficulty());
+                intent.putExtra("author", recipe.getUser_id());
 
-                    context.startActivity(intent);
-                }
+                context.startActivity(intent);
             });
         }
     }

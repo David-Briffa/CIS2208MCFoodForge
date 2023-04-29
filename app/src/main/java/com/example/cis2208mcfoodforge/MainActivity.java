@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         com.example.cis2208mcfoodforge.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        BottomNavigationView navView = findViewById(R.id.nav_view);
+        findViewById(R.id.nav_view);
 
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_discover, R.id.navigation_favourites, R.id.navigation_timer)

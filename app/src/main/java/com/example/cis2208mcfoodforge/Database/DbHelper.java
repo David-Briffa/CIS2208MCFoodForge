@@ -9,8 +9,6 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import com.example.cis2208mcfoodforge.Database.DatabaseContract;
-
 //database helper class for use with the favourites database component of the application
 public class DbHelper extends SQLiteOpenHelper {
     private final Context context;
